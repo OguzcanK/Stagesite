@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->unsignedInteger('role_id');
-            $table->unsignedInteger('contact_id');
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('contact_id')->references('id')->on('contacts');
-            $table->rememberToken();
+            $table->string('role')->unique();
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('roles');
     }
 }

@@ -16,7 +16,7 @@ class CreateToolsTable extends Migration
         Schema::create('tools', function (Blueprint $table) { 
             $table->increments('id');
             $table->string('name');
-            $table->longtext('description');
+            $table->longText('description');
             $table->unsignedInteger('status_id');
             $table->foreign('status_id')->references('id')->on('statuses');
         });

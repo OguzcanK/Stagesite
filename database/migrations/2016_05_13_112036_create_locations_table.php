@@ -14,7 +14,6 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            
             $table->unsignedInteger('school_id');
             $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
             $table->timestamps();

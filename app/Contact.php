@@ -14,4 +14,22 @@ class Contact extends Model
         'email',
         'phonenumber'
     ];
+
+    public
+    function companies ()
+    {
+        return $this->hasOne('App\Comapany');
+    }
+
+    public
+    function internship ()
+    {
+        return $this->hasMany('App\Internship');
+    }
+
+    public
+    function users ()
+    {
+        return $this->hasOne('App\User');
+    }
 }
