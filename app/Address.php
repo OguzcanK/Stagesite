@@ -25,5 +25,4 @@ class Address extends Model
 	{
 		return $this->hasOne ('App\Company');
 	}
-
 }
