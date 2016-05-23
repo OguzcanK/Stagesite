@@ -17,8 +17,9 @@ class CreateEducationOffersTable extends Migration
             $table->string('education_id');
             $table->unsignedInteger('cohort_id');
             $table->foreign('cohort_id')->references('id')->on('cohorts')->onDelete('cascade');
-            $table->unsignedInteger('address_id');
-            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
+            $table->unsignedInteger('location_id');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -19,9 +19,9 @@ class Education_offer extends Model
 	}
 
 	public
-	function addresses ()
+	function locations ()
 	{
-		return $this->hasOne('App\Address');
+		return $this->hasOne('App\Location');
 	}
 
 	public

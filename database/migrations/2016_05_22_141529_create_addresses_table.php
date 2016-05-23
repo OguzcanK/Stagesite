@@ -20,10 +20,13 @@ class CreateAddressesTable extends Migration
             $table->string('state');
 
             $table->unsignedInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->nullable();
             
             $table->unsignedInteger('education_offer_id');
-            $table->foreign('education_offer_id')->references('id')->on('education_offers')->onDelete('cascade');
+            $table->foreign('education_offer_id')->references('id')->on('education_offers')->onDelete('cascade')->nullable();
+
+            $table->unsignedInteger('location_id');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

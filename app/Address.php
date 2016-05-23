@@ -15,14 +15,21 @@ class Address extends Model
 		];
 
 	public
-	function schools ()
+	function locations ()
 	{
-		return $this->hasOne('App\Shool');
+		return $this->hasOne ('App\Location');
 	}
 
 	public
-	function education_offers ()
+	function schools ()
 	{
-		return $this->hasMany('App\Education_offer');
+		return $this->hasOne ('App\Shool');
 	}
+
+	public
+	function companies ()
+	{
+		return $this->hasOne ('App\Company');
+	}
+
 }
