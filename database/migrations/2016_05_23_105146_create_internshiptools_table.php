@@ -21,6 +21,8 @@ class CreateInternshiptoolsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('internship_id')->references('id')->on('internships');
             $table->foreign('tool_id')->references('id')->on('tools');
+
+            $table->timestamps();
         });
     }
 
