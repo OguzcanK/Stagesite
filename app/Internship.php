@@ -31,4 +31,10 @@ class Internship extends Model
 	{
 		return $this->hasMany('App\Status');
 	}
+
+	public
+	function intershipusers ()
+	{
+		return $this->belongsToMany('App\IntershipUser');
+	}
 }

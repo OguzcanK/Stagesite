@@ -22,4 +22,14 @@ class InternshipUser extends Model
 	{
 		return $this->hasOne ('App\User');
 	}
+	public
+	function internshiptools ()
+	{
+		return $this->belongsToMany ('App\Internshiptool');
+	}
+	public
+	function reviews ()
+	{
+		return $this->belongsTo ('App\Review');
+	}
 }

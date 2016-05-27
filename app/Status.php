@@ -14,18 +14,18 @@ class Status extends Model
 	public
 	function internships ()
 	{
-		return $this->hasMany ('App\Internship');
+		return $this->belongsToMany ('App\Internship');
 	}
 	
 	public
 	function reviews ()
 	{
-		return $this->hasMany ('App\Review');
+		return $this->belongsToMany ('App\Review');
 	}
 	
 	public
 	function tools ()
 	{
-		return $this->hasMany ('App\Tool');
+		return $this->belongsToMany ('App\Tool');
 	}
 }
