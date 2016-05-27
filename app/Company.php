@@ -15,12 +15,18 @@ class Company extends Model
     public
     function contacts ()
     {
-        return $this->hasMany('App\Contact');
+        return $this->belongsToMany('App\Contact');
     }
 
     public
     function internshiptools ()
     {
-        return $this->hasOne('App\Internshiptool');
+        return $this->belongsToMany('App\Internshiptool');
+    }
+
+    public
+    function addresses ()
+    {
+        return $this->belongsToMany('App\Address');
     }
 }

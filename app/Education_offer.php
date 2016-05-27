@@ -15,7 +15,7 @@ class Education_offer extends Model
 	public
 	function cohorts ()
 	{
-		return $this->hasOne('App\Cohort');
+		return $this->belongsTo('App\Cohort');
 	}
 
 	public

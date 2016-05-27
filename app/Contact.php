@@ -18,18 +18,18 @@ class Contact extends Model
     public
     function companies ()
     {
-        return $this->hasOne('App\Comapany');
+        return $this->belongsTo('App\Comapany');
     }
 
     public
     function internship ()
     {
-        return $this->hasMany('App\Internship');
+        return $this->belongsToMany('App\Internship');
     }
 
     public
     function users ()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 }

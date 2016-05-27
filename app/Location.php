@@ -15,5 +15,15 @@ class Location extends Model
 	{
 		return $this->hasOne('App\School');
 	}
-	
+
+	public
+	function education_offers ()
+	{
+		return $this->belongsToMany('App\Education_offer');
+	}
+	public
+	function addresses ()
+	{
+		return $this->belongsToMany('App\Addres');
+	}
 }

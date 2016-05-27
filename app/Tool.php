@@ -11,10 +11,15 @@ class Tool extends Model
         'description'
     ];
 
+    public
+    function internshiptools ()
+    {
+        return $this->belongsTo('App\Internshiptool');
+    }
 
     public
     function statuses ()
     {
-        return $this->hasOne('App\Status');
+        return $this->belongsToMany('App\Status');
     }
 }
