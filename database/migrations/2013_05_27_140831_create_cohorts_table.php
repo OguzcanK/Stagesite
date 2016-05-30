@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateToolsTable extends Migration
+class CreateCohortsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateToolsTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('tools', function (Blueprint $table) { 
+        Schema::create('cohorts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->longtext('description');
-            $table->unsignedInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('statuses');
+            $table->string('schoolyear')->nullable();
+            $table->unsignedInteger('crebo_id');
+            $table->foreign('crebo_id')->references('id')->on('cohorts')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +29,6 @@ class CreateToolsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('cohorts');
     }
 }

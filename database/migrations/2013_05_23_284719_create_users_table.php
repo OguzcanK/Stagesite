@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCohortsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,15 @@ class CreateCohortsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cohorts', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('schoolyear');
-            $table->unsignedInteger('crebo_id');
-            $table->foreign('crebo_id')->references('id')->on('cohorts')->onDelete('cascade');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
+            $table->unsignedInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->nullable();
         });
     }
 
@@ -29,6 +31,6 @@ class CreateCohortsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cohorts');
+        Schema::drop('users');
     }
 }

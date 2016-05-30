@@ -15,12 +15,12 @@ class Cohort extends Model
 	public
 	function education_offers ()
 	{
-		return $this->hasMany ('App\Education_offer');
+		return $this->belongsToMany ('App\Education_offer');
 	}
 
 	public
 	function crebos ()
 	{
-		return $this->hasOne('App\Crebo');
+		return $this->hasOne ('App\Crebo');
 	}
 }

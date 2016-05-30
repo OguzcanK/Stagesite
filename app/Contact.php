@@ -12,6 +12,24 @@ class Contact extends Model
         'insertion',
         'firstname',
         'email',
-        'phonenumber'
+        'phonenumber',
     ];
+
+    public
+    function companies ()
+    {
+        return $this->belongsTo('App\Company');
+    }
+
+    public
+    function internship ()
+    {
+        return $this->belongsToMany('App\Internship');
+    }
+
+    public
+    function users ()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -10,4 +10,11 @@ class School extends Model
 		= [
 			'name',
 		];
+
+
+	public
+	function locations ()
+	{
+		return $this->belongsToMany('App\Location');
+	}
 }

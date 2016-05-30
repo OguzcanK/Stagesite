@@ -14,19 +14,19 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('streetnumber');
+            $table->integer('streetnumber');
             $table->string('street');
             $table->string('postcode');
             $table->string('state');
 
-            $table->unsignedInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->nullable();
+            $table->unsignedInteger('company_id')->nullable();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             
-            $table->unsignedInteger('education_offer_id');
-            $table->foreign('education_offer_id')->references('id')->on('education_offers')->onDelete('cascade')->nullable();
+            $table->unsignedInteger('education_offer_id')->nullable();
+            $table->foreign('education_offer_id')->references('id')->on('education_offers')->onDelete('cascade');
 
-            $table->unsignedInteger('location_id');
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->nullable();
+            $table->unsignedInteger('location_id')->nullable();
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
             $table->timestamps();
         });
     }
