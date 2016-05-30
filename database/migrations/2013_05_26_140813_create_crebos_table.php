@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanyTable extends Migration
+class CreateCrebosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreateCompanyTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('crebos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('phonenumber');
+            $table->integer('number');
+
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class CreateCompanyTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('crebos');
     }
 }

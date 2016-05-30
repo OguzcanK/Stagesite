@@ -14,7 +14,7 @@ class CreateEducationOffersTable extends Migration
     {
         Schema::create('education_offers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('education_id');
+            $table->integer('education_id');
             $table->unsignedInteger('cohort_id');
             $table->foreign('cohort_id')->references('id')->on('cohorts')->onDelete('cascade');
             $table->unsignedInteger('location_id');

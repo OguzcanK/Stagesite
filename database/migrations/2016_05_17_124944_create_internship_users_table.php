@@ -14,9 +14,9 @@ class CreateInternshipUsersTable extends Migration
     {
         Schema::create('internship_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('internship_id')->unsigned();
+            $table->unsignedInteger('internship_id');
             $table->foreign('internship_id')->references('id')->on('internships');
             $table->timestamps();
         });

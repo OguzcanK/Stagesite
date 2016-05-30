@@ -6,7 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 
 class InternshipUser extends Model
 {
-    protected $fillable = [
-        'internship_id', 'user_id',
-    ];
+	protected $fillable = [
+		'internship_id',
+		'user_id',
+	];
+
+	public
+	function internship ()
+	{
+		return $this->hasOne ('App\Internship');
+	}
+
+	public
+	function users ()
+	{
+		return $this->hasOne ('App\User');
+	}
+	public
+	function internshiptools ()
+	{
+		return $this->belongsToMany ('App\Internshiptool');
+	}
+	public
+	function reviews ()
+	{
+		return $this->belongsTo ('App\Review');
+	}
 }

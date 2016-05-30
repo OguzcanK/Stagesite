@@ -21,15 +21,8 @@ class Address extends Model
 	}
 
 	public
-	function schools ()
-	{
-		return $this->hasOne ('App\Shool');
-	}
-
-	public
 	function companies ()
 	{
 		return $this->hasOne ('App\Company');
 	}
-
 }

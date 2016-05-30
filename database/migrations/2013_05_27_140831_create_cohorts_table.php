@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCrebosTable extends Migration
+class CreateCohortsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreateCrebosTable extends Migration
      */
     public function up()
     {
-        Schema::create('crebos', function (Blueprint $table) {
+        Schema::create('cohorts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('nummer');
-
+            $table->string('schoolyear')->nullable();
+            $table->unsignedInteger('crebo_id');
+            $table->foreign('crebo_id')->references('id')->on('cohorts')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateCrebosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('crebos');
+        Schema::drop('cohorts');
     }
 }
