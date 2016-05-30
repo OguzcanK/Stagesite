@@ -12,17 +12,19 @@ class Address extends Model
 			'postcode',
 			'state',
 			'streetnumber',
+			'company_id',
+			'education_offer_id'
 		];
 
 	public
 	function locations ()
 	{
-		return $this->hasOne ('App\Location');
+		return $this->belongsTo ('App\Location');
 	}
 
 	public
 	function companies ()
 	{
-		return $this->hasOne ('App\Company');
+		return $this->belongsTo ('App\Company');
 	}
 }

@@ -13,17 +13,17 @@ class Location extends Model
 	public
 	function schools ()
 	{
-		return $this->hasOne('App\School');
+		return $this->belongsTo('App\School');
 	}
 
 	public
 	function education_offers ()
 	{
-		return $this->belongsToMany('App\Education_offer');
+		return $this->hasMany('App\Education_offer');
 	}
 	public
 	function addresses ()
 	{
-		return $this->belongsToMany('App\Addres');
+		return $this->hasMany('App\Addres');
 	}
 }

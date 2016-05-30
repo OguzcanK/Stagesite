@@ -10,23 +10,24 @@ class Internshiptool extends Model
 		'tool_id',
 		'internship_user_id',
 		'company_id',
+		'tool_id',
 	];
 
 	public
 	function tools ()
 	{
-		return $this->hasOne ('App\Tool');
+		return $this->belongsTo ('App\Tool');
 	}
 
 	public
 	function internship_users ()
 	{
-		return $this->hasOne ('App\InternshipUser');
+		return $this->belongsTo ('App\InternshipUser');
 	}
 
 	public
 	function companies ()
 	{
-		return $this->hasOne ('App\Company');
+		return $this->belongsTo ('App\Company');
 	}
 }

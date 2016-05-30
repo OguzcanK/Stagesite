@@ -13,6 +13,7 @@ class Contact extends Model
         'firstname',
         'email',
         'phonenumber',
+        'company_id'
     ];
 
     public

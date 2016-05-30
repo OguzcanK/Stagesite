@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    //
     protected $fillable = [
         'name',
         'phonenumber'
@@ -15,7 +14,7 @@ class Company extends Model
     public
     function contacts ()
     {
-        return $this->belongsToMany('App\Contact');
+        return $this->hasMany('App\Contact');
     }
 
     public
@@ -27,6 +26,6 @@ class Company extends Model
     public
     function addresses ()
     {
-        return $this->belongsToMany('App\Address');
+        return $this->hasMany('App\Address');
     }
 }

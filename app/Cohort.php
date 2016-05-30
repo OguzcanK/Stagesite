@@ -10,17 +10,18 @@ class Cohort extends Model
 		= [
 			'name',
 			'schoolyear',
+			'crebo_id'
 		];
 
 	public
 	function education_offers ()
 	{
-		return $this->belongsToMany ('App\Education_offer');
+		return $this->hasMany ('App\Education_offer');
 	}
 
 	public
 	function crebos ()
 	{
-		return $this->hasOne ('App\Crebo');
+		return $this->belongsTo ('App\Crebo');
 	}
 }
