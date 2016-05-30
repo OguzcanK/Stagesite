@@ -1,14 +1,8 @@
 <?php
 
-Route::get('contact.index', 'ContactController@show');
+
+Route::get('/', 'ContactController@show');
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/login', 'HomeController@index');
 
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
