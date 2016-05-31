@@ -26,6 +26,7 @@ class InternshipController extends Controller
                 'status_id' => $status_id->id
             ]);
 
-        return view('home');
+        $companies = Company::all();
+        return view('welcome', compact('companies'));
     }
 }
