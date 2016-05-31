@@ -14,17 +14,21 @@
                             {{ $company->name }} {{ $company->phonenumber }}
                                 </p>
                                 @foreach($company->contacts as $contact)
+                                <div class="well">
                                     <p>Contactpersoon:
                                     {{ $contact->firstname }} {{ $contact->surename }}
                                     </p>
                                         @foreach($contact->internship as $internship)
+                                        <div class="well">
                                             <p>Stage:
-                                            {{ $internship->begin }} {{ $internship->end }}
+                                            van {{ $internship->begin }} tot {{ $internship->end }}
                                                 </p>
                                             <p>Status:
                                             {{ $internship->status->name }}
                                             </p>
+                                </div>
                                         @endforeach
+                        </div>
                                 @endforeach
                         </div>
                     @endforeach
