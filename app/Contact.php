@@ -25,7 +25,7 @@ class Contact extends Model
     public
     function internship ()
     {
-        return $this->belongsToMany('App\Internship');
+        return $this->hasMany('App\Internship');
     }
 
     public

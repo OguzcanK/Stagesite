@@ -18,5 +18,11 @@ class CompaniesTableSeeder extends Seeder
                 'phonenumber' => '06-66655544'
             ]);
 
+        Company::create(
+            [
+                'name' => 'testcompany2',
+                'phonenumber' => '06-31255544'
+            ]);
+
     }
 }
