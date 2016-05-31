@@ -29,4 +29,16 @@ class InternshipController extends Controller
         $companies = Company::all();
         return view('welcome', compact('companies'));
     }
+
+    public function update(Request $request, $internship){
+        $input = $request->all();
+        $internship = Internship::findorfail($internship);
+        $status_id = Status::findorfail($input['status_id']);
+
+        $contact_id = Company::findorfail($input['contact_id']);
+
+        $internship->update($input);
+        $companies = Company::all();
+        return view('welcome', compact('companies'));
+    }
 }

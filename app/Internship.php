@@ -11,8 +11,7 @@ class Internship extends Model
 		'end',
 		'status_id',
 		'education_offer_id',
-		'contact_id',
-		'status'
+		'contact_id'
 	];
 
 	public

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Company;
 use App\Contact;
+use App\Internship;
 use App\Status;
 use Illuminate\Http\Request;
 
@@ -29,5 +30,27 @@ class InternshipController extends Controller
             $contactArray[$contact->id] = $contact->firstname ." ". $contact->surename;
         }
         return view('Internships.create', compact('contactArray', 'statusArray'));
+    }
+
+    public function edit($internship){
+
+
+        $internship = Internship::findorfail($internship);
+        $contacts = Contact::all();
+
+        $contactArray = [];
+
+        $status = Status::all();
+
+        $statusArray = [];
+
+        foreach($status as $state){
+            $statusArray[$state->id] = $state->name;
+        }
+        foreach($contacts as $contact){
+            $contactArray[$contact->id] = $contact->firstname ." ". $contact->surename;
+        }
+
+        return view('Internships.edit', compact('internship', 'contactArray', 'statusArray'));
     }
 }
