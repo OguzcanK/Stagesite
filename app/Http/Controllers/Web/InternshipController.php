@@ -10,26 +10,30 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class InternshipController extends Controller
 {
     public function create(){
 
-        $contacts = Contact::all();
+        $company = Contact::all();
 
-        $contactArray = [];
+        $companyArray = [];
 
         $status = Status::all();
 
         $statusArray = [];
 
+
         foreach($status as $state){
             $statusArray[$state->id] = $state->name;
         }
-        foreach($contacts as $contact){
-            $contactArray[$contact->id] = $contact->firstname ." ". $contact->surename;
+        foreach($company as $c){
+            $companyArray[$c->id] = $c->firstname. " ". $c->surename;
         }
-        return view('Internships.create', compact('contactArray', 'statusArray'));
+        return view('Internships.create', compact('companyArray', 'statusArray'));
     }
 
     public function edit($internship){

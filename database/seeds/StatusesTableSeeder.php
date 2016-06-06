@@ -15,15 +15,18 @@ class StatusesTableSeeder extends Seeder
         Status::create(
 
             [
-                'name' => 'starting'
+                'name' => 'starting',
+                'categorie_id' => '2'
             ]);
         Status::create(
             [
-                'name' => 'in progress'
+                'name' => 'in progress',
+                'categorie_id' => '2'
             ]);
         Status::create(
             [
-                'name' => 'done'
+                'name' => 'done',
+                'categorie_id' => '2'
             ]);
     }
 }

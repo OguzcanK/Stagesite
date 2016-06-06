@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
 	protected $fillable = [
-		'name',
+		'name', 'subject', 'categorie_id',
 	];
 
 
@@ -27,5 +27,9 @@ class Status extends Model
 	function tools ()
 	{
 		return $this->hasMany ('App\Tool');
+	}
+
+	function categorie(){
+		return $this->belongsTo('App\Categorie');
 	}
 }
