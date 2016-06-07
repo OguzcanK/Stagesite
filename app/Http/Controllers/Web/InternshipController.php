@@ -57,4 +57,10 @@ class InternshipController extends Controller
 
         return view('Internships.edit', compact('internship', 'contactArray', 'statusArray'));
     }
+
+    public function show($internship){
+        $internship = Internship::findorfail($internship);
+        return view('Internships.show', compact('internship'));
+
+    }
 }

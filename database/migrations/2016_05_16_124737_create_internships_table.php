@@ -19,9 +19,9 @@ class CreateInternshipsTable extends Migration
             $table->unsignedInteger('status_id');
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->unsignedInteger('education_offer_id')->nullable();
-            $table->foreign('education_offer_id')->references('id')->on('education_offers')->onDelete('cascade');;
+            $table->foreign('education_offer_id')->references('id')->on('education_offers')->onDelete('cascade');
             $table->unsignedInteger('contact_id');
-            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');;;
+            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->timestamps();
         });
     }

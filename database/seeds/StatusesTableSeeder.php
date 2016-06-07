@@ -16,7 +16,7 @@ class StatusesTableSeeder extends Seeder
 
             [
                 'name' => 'starting',
-                'categorie_id' => '2'
+                'categorie_id' => '1'
             ]);
         Status::create(
             [
@@ -27,6 +27,12 @@ class StatusesTableSeeder extends Seeder
             [
                 'name' => 'done',
                 'categorie_id' => '2'
+            ]);
+
+        Status::create(
+            [
+                'name' => 'okee',
+                'categorie_id' => '3'
             ]);
     }
 }

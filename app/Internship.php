@@ -33,8 +33,8 @@ class Internship extends Model
 	}
 
 	public
-	function intershipusers ()
+	function internshipusers ()
 	{
-		return $this->hasMany('App\IntershipUser');
+		return $this->hasMany('App\InternshipUser');
 	}
 }

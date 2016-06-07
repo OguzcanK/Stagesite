@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Categorie;
 use App\Status;
 use Illuminate\Http\Request;
 
@@ -12,20 +13,43 @@ class StatusController extends Controller
 {
     public function create(){
 
+        $categories = Categorie::all();
 
-        return view('status.create');
+        $categorieArray = [];
+
+        foreach($categories as $categorie){
+
+                $categorieArray[$categorie->id] = $categorie->name;
+            }
+
+
+        return view('status.create', compact('categorieArray'));
     }
 
     public function show(){
-        $status = Status::all();
+        $categories = Categorie::all();
 
 
         $statusArray = [];
+        $statusArray1 = [];
+        $statusArray2 = [];
 
-        foreach($status as $state){
-            $statusArray[$state->id] = $state->name;
+        foreach($categories as $categorie){
+            foreach($categorie->status as $status){
+                if($status->categorie_id == 1){
+                $statusArray[$status->id] = $status->name;
+                }
+                elseif($status->categorie_id == 2){
+                    $statusArray1[$status->id] = $status->name;
+                }
+                else{
+                    $statusArray2[$status->id] = $status->name;
+                }
+
+            }
         }
 
-        return view('status.show', compact('statusArray'));
+        return view('status.show', compact('statusArray', 'statusArray1', 'statusArray2'));
     }
+
 }

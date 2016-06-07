@@ -8,30 +8,23 @@
                     <div class="panel-heading">Create a new Internship</div>
 
                     <div class="panel-body">
-                        {!! Form::open(['url' => ['internship'], 'method' => 'POST']) !!}
+                        {!! Form::open(['url' => ['status'], 'method' => 'POST']) !!}
 
                         <fieldset class="col-md-5">
                             <legend>persoonlijke gegevens</legend>
                             <div class="form-group ">
-                                {!! Form::label('begin', 'Begindatum:*') !!}
-                                {!! Form::Date('begin', null, ['class' => 'form-control', 'required']) !!}
+                                {!! Form::label('name', 'Naam:*') !!}
+                                {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
                             </div>
+
                             <div class="form-group">
-                                {!! Form::label('end', 'Einddatum:') !!}
-                                {!! Form::Date('end', null, ['class' => 'form-control']) !!}
-                            </div>
-                            <div class="form-group">
-                                {!! Form::label('Status', 'Status:') !!}
-                                {!! Form::select('status_id', $statusArray, null, ['class' => 'form-control']) !!}
-                            </div>
-                            <div class="form-group">
-                                {!! Form::label('Contactpersoon', 'Contactpersoon:') !!}
-                                {!! Form::select('contact_id', $companyArray, null, ['class' => 'form-control']) !!}
+                                {!! Form::label('Categorie', 'Categorie:') !!}
+                                {!! Form::select('categorie_id', $categorieArray, null, ['class' => 'form-control']) !!}
                             </div>
                         </fieldset>
 
                         <div class="form-group col-md-12">
-                            {!! Form::submit('stage toevoegen!', ['class' => 'btn btn-primary form-control ']) !!}
+                            {!! Form::submit('status toevoegen!', ['class' => 'btn btn-primary form-control ']) !!}
                         </div>
                         {!! Form::close() !!}
                     </div>

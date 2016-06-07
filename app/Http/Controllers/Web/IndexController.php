@@ -14,8 +14,8 @@ class IndexController extends Controller
 {
     public function show(){
 
-        $companies = Company::all();
+        $company = Company::all();
 
-        return view('welcome', compact('companies'));
+        return view('welcome', compact('company'));
     }
 }

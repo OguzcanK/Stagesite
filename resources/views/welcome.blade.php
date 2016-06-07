@@ -8,28 +8,29 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    @foreach($companies as $company)
+                    @foreach($company as $c)
                         <div class="well">
-                            <p>Bedrijf:
-                            {{ $company->name }} {{ $company->phonenumber }}
-                                </p>
-                                @foreach($company->contacts as $contact)
+                            <p>Contactpersoon:
+                                {{ $c->name }}
+                            </p>
                                 <div class="well">
-                                    <p>Contactpersoon:
-                                    {{ $contact->firstname }} {{ $contact->surename }}
+                                    @foreach($c->contacts as $co)
+                                    <p>bedrijf:
+                                        {{ $co->firstname }} {{ $co->surename }}
                                     </p>
-                                        @foreach($contact->internship as $internship)
-                                        <div class="well">
+
+                                        @foreach($co->internships as $internship)
                                             <p>Stage:
-                                            van {{ $internship->begin }} tot {{ $internship->end }}
-                                                </p>
-                                            <p>Status:
-                                            {{ $internship->status->name }}
+                                                van {{ $internship->begin }} tot {{ $internship->end }}
                                             </p>
+
+                                            <p>Status:
+                                                {{ $internship->status->name }}
+                                            </p>
+                                            @endforeach
+                                    @endforeach
                                 </div>
-                                        @endforeach
-                        </div>
-                                @endforeach
+
                         </div>
                     @endforeach
                 </div>

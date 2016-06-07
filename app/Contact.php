@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    //
     protected $fillable = [
         'surename',
         'insertion',
@@ -23,7 +22,7 @@ class Contact extends Model
     }
 
     public
-    function internship ()
+    function internships ()
     {
         return $this->hasMany('App\Internship');
     }
