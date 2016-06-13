@@ -21,7 +21,7 @@ class StatusController extends Controller
                 'categorie_id' => $categorie_id->id
             ]);
 
-        $companies = Company::all();
-        return view('welcome', compact('companies'));
+        $company = Company::all();
+        return view('welcome', compact('company'));
     }
 }

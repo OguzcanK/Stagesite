@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Web;
 use App\Company;
 use App\Contact;
 use App\Internship;
+use App\InternshipUser;
 use App\Status;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 
 class InternshipController extends Controller
@@ -60,6 +61,7 @@ class InternshipController extends Controller
 
     public function show($internship){
         $internship = Internship::findorfail($internship);
+
         return view('Internships.show', compact('internship'));
 
     }

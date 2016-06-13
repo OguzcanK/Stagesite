@@ -8,7 +8,7 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Web'], function() {
 });
 
     Route::group(['middleware' => ['web','api'], 'namespace' => 'API'], function() {
-        Route::resource('internship' , 'InternshipController', ['only' => ['store', 'update']]);
+        Route::resource('internship' , 'InternshipController', ['only' => ['store', 'update', 'destroy']]);
         Route::resource('status', 'StatusController', ['only' => ['store', 'update']]);
 
 });

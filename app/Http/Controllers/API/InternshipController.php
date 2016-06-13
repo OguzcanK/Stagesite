@@ -38,7 +38,16 @@ class InternshipController extends Controller
         $contact_id = Company::findorfail($input['contact_id']);
 
         $internship->update($input);
-        $companies = Company::all();
-        return view('welcome', compact('companies'));
+        $company = Company::all();
+        return view('welcome', compact('company'));
+    }
+
+    public function destroy($internship){
+        if($internship->delete()) {
+            return response(1, 200);
+        }
+
+
+        return response(0, 200);
     }
 }
