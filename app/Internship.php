@@ -11,8 +11,7 @@ class Internship extends Model
 		'end',
 		'status_id',
 		'education_offer_id',
-		'contact_id',
-		'status_id'
+		'contact_id'
 	];
 
 	public
@@ -34,8 +33,8 @@ class Internship extends Model
 	}
 
 	public
-	function intershipusers ()
+	function internshipusers ()
 	{
-		return $this->hasMany('App\IntershipUser');
+		return $this->hasMany('App\InternshipUser');
 	}
 }

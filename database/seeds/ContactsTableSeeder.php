@@ -21,5 +21,14 @@ class ContactsTableSeeder extends Seeder
                 'company_id' => 1,
             ]);
 
+        Contact::create(
+            [
+                'surename' => 'kappa',
+                'firstname' => 'Terro',
+                'email' => 'terro@kappa.kp',
+                'phonenumber' => '0622233311',
+                'company_id' => 2,
+            ]);
+
     }
 }

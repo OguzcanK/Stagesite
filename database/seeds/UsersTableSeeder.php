@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
                 'name' => 'admin',
                 'email' => 'admin@admin.nl',
                 'password' => bcrypt('password'),
-                'role_id' => 1
+                'role_id' => 1,
+                'contact_id' => 1
             ]);
 
         User::create(
@@ -24,7 +25,8 @@ class UsersTableSeeder extends Seeder
                 'name' => 'user',
                 'email' => 'user@user.nl',
                 'password' => bcrypt('password'),
-                'role_id' => 2
+                'role_id' => 2,
+                'contact_id' => 1
             ]);
     }
 }
