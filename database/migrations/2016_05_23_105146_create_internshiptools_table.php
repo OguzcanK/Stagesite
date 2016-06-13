@@ -15,11 +15,11 @@ class CreateInternshiptoolsTable extends Migration
         //
         Schema::create('internshiptools', function (Blueprint $table){
             $table->increments('id');
-            $table->unsignedInteger('internship_id');
+            $table->unsignedInteger('internship_user_id');
             $table->unsignedInteger('company_id');
             $table->unsignedInteger('tool_id');
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('internship_id')->references('id')->on('internships');
+            $table->foreign('internship_user_id')->references('id')->on('internship_users')->onDelete('cascade');
             $table->foreign('tool_id')->references('id')->on('tools');
 
             $table->timestamps();

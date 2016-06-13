@@ -12,7 +12,7 @@ class Internship extends Model
 		'status_id',
 		'education_offer_id',
 		'contact_id',
-		'status'
+		'status_id'
 	];
 
 	public
