@@ -38,12 +38,11 @@
       </tr>
         <tr>
             <td><a href="{{ route('location.edit', $address->id) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
-            @if (count($array) > 1)
+
             <td>
                 {!! Form::open(['route' => ['location.destroy', $address->id], 'method' => 'delete', 'class'=>'delete inline']) !!}
                     {!! Form::submit("trash", ['class' => 'btn btn-danger delete ']) !!}
                 {!! Form::close() !!}</td>
-                @endif
         </tr>
     @endforeach
 @endforeach
@@ -59,12 +58,12 @@
                     @foreach ($education_offers as $array)
                         @foreach ($array as $education_offer)
 
-                            <td>
+                            {{--<td>
             <p>
-                education id:<br>
+                    education id:<br>
                 {{ $education_offer->education_id }}
             </p>
-        </td>
+        </td>--}}
                             @if(isset($cohorts))
                                 <td>
                                 @foreach ($cohorts as $array)
@@ -87,6 +86,9 @@
                         {{ $crebo->name }}<br>
                                                     {{ $crebo->number }}
                     </td>
+                                                <td>
+                                                    <a href="{{ route('crebo.edit', ['crebo' => $crebo->id]) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                                                </td>
                                             @endforeach
                                         @endforeach
                                     @endforeach

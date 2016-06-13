@@ -10,31 +10,32 @@ class Internship extends Model
 		'begin',
 		'end',
 		'status_id',
-		'opleidingsaanbod_id',
+		'education_offer_id',
 		'contact_id',
+		'status_id'
 	];
 
 	public
 	function contacts ()
 	{
-		return $this->hasOne('App\Contact');
+		return $this->belongsTo('App\Contact');
 	}
 
 	public
 	function education_offers ()
 	{
-		return $this->hasMany('App\Education_offer');
+		return $this->belongsTo('App\Education_offer');
 	}
 
 	public
 	function status ()
 	{
-		return $this->hasMany('App\Status');
+		return $this->belongsTo('App\Status');
 	}
 
 	public
 	function intershipusers ()
 	{
-		return $this->belongsToMany('App\IntershipUser');
+		return $this->hasMany('App\IntershipUser');
 	}
 }

@@ -16,14 +16,14 @@ class Review extends Model
 	public
 	function internship_users ()
 	{
-		return $this->hasOne('App\InternshipUser');
+		return $this->belongsTo('App\InternshipUser');
 	}
 
 
 	public
 	function statuses ()
 	{
-		return $this->hasOne('App\Status');
+		return $this->belongsTo('App\Status');
 	}
 	
 	

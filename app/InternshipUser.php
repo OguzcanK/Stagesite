@@ -14,13 +14,13 @@ class InternshipUser extends Model
 	public
 	function internship ()
 	{
-		return $this->hasOne ('App\Internship');
+		return $this->belongsTo ('App\Internship');
 	}
 
 	public
 	function users ()
 	{
-		return $this->hasOne ('App\User');
+		return $this->belongsTo ('App\User');
 	}
 	public
 	function internshiptools ()
@@ -30,6 +30,6 @@ class InternshipUser extends Model
 	public
 	function reviews ()
 	{
-		return $this->belongsTo ('App\Review');
+		return $this->hasOne ('App\Review');
 	}
 }

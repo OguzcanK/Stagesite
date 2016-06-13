@@ -12,13 +12,14 @@ class Contact extends Model
         'insertion',
         'firstname',
         'email',
-        'phonenumber'
+        'phonenumber',
+        'company_id'
     ];
 
     public
     function companies ()
     {
-        return $this->belongsTo('App\Comapany');
+        return $this->belongsTo('App\Company');
     }
 
     public

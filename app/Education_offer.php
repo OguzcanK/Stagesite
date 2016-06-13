@@ -10,6 +10,8 @@ class Education_offer extends Model
 		= [
 			'education_id',
 			'schoolyear',
+			'location_id',
+			'cohort_id'
 		];
 
 	public
@@ -21,7 +23,7 @@ class Education_offer extends Model
 	public
 	function locations ()
 	{
-		return $this->hasOne('App\Location');
+		return $this->belongsTo('App\Location');
 	}
 
 	public

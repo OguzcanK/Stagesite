@@ -8,18 +8,19 @@ class Tool extends Model
 {
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'status_id'
     ];
 
     public
     function internshiptools ()
     {
-        return $this->belongsTo('App\Internshiptool');
+        return $this->belongsToMany('App\Internshiptool');
     }
 
     public
     function statuses ()
     {
-        return $this->belongsToMany('App\Status');
+        return $this->belongsTo('App\Status');
     }
 }
