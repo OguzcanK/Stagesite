@@ -19,5 +19,18 @@ class RolesTableSeeder extends Seeder
             [
                 'role' => 'user'
             ]);
+        Role::create(
+            [
+                'role' => 'student'
+            ]);
+        Role::create(
+            [
+                'role' => 'teacher'
+            ]);
+        Role::create(
+            [
+                'role' => 'practical trainer'
+            ]);
+
     }
 }
