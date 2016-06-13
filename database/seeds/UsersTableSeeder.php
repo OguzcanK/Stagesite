@@ -28,5 +28,30 @@ class UsersTableSeeder extends Seeder
                 'role_id' => 2,
                 'contact_id' => 1
             ]);
+
+        User::create(
+            [
+                'name' => 'student',
+                'email' => 'student@student.nl',
+                'password' => bcrypt('password'),
+                'role_id' => 3
+            ]);
+
+        User::create(
+            [
+                'name' => 'teacher',
+                'email' => 'teacher@teacher.nl',
+                'password' => bcrypt('password'),
+                'role_id' => 4
+            ]);
+
+
+        User::create(
+            [
+                'name' => 'practical trainer',
+                'email' => 'practical@practical.nl',
+                'password' => bcrypt('password'),
+                'role_id' => 5
+            ]);
     }
 }

@@ -17,7 +17,7 @@ class CreateInternshipUsersTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('internship_id');
-            $table->foreign('internship_id')->references('id')->on('internships');
+            $table->foreign('internship_id')->references('id')->on('internships')->onDelete('cascade');
             $table->timestamps();
         });
     }
