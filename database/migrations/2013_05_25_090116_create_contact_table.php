@@ -18,12 +18,12 @@ class CreateContactTable extends Migration
             $table->string('insertion')->nullable();
             $table->string('firstname', 60);
             $table->string('email');
-            $table->integer('phonenumber')->nullable();
+            $table->string('phonenumber')->nullable();
             $table->unsignedInteger('company_id')->nullable();
            
             $table->timestamps(); 
             
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');;
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 
@@ -34,6 +34,6 @@ class CreateContactTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop ('contacts');
     }
 }
