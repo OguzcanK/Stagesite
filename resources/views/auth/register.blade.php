@@ -66,6 +66,31 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Role</label>
+
+                            <?php
+                            $role = \App\Role::all();
+
+                            ?>                                    @foreach($role as $roles)
+                                <?php
+                                dd($roles);
+                                ?>
+                            @endforeach
+
+                                <select class="form-control" name="role_id">
+
+                                    </select>
+                            <div class="col-md-6">
+                                @if ($errors->has('role_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
