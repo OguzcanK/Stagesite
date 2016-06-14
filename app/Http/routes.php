@@ -22,6 +22,7 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Web'], function() {
 		Route::resource('contact', 'ContactController', ['only' => ['store', 'update', 'destroy']]);
 		Route::resource('company', 'CompanyController', ['only' => ['store', 'update', 'destroy']]);
 		Route::resource('tool', 'ToolController', ['only' => ['store', 'update', 'destroy']]);
+		Route::resource('review', 'ReviewController', ['only' => ['store', 'update', 'destroy']]);
 });
 Route::auth();
 

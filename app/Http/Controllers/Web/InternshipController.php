@@ -62,7 +62,12 @@ class InternshipController extends Controller
     public function show($internship){
         $internship = Internship::findorfail($internship);
 
-        return view('Internships.show', compact('internship'));
+        $internshipUsers = DB::table ('internship_users')->where ('internship_id', $internship->id)->get ();
+        //$reviews = DB::table ('reviews')->where ('internship_user_id', $internshipUsers->id)->all();
+        foreach ($internshipUsers as $review) {
+            $reviews[] = DB::table ('reviews')->where ('internship_user_id', $review->id)->get ();
+        }
+        return view('Internships.show', compact('internship', 'reviews'));
 
     }
 }

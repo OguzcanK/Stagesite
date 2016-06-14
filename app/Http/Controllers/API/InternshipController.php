@@ -26,8 +26,8 @@ class InternshipController extends Controller
                 'status_id' => $status_id->id
             ]);
 
-        $companies = Company::all();
-        return view('welcome', compact('companies'));
+        $company = Company::all();
+        return view('welcome', compact('company'));
     }
 
     public function update(Request $request, $internship){
