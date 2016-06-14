@@ -27,7 +27,7 @@
                                             </p>
 
                                             <p>Status:
-                                                {{ $internship->status->name }}
+                                                {{ $internship->status->name }} {{ $internship->contact->firstname }}
                                             </p>
                                                 <a href="{{ route('internship.edit', $internship->id) }}" class="btn btn-info">Verander</a>
                                                 <a href="{{ route('internship.destroy', $internship->id) }}" data-token="{{ csrf_token() }}" class="delete btn btn-danger">verwijderen</a>
