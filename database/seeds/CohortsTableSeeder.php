@@ -14,9 +14,8 @@ class CohortsTableSeeder extends Seeder
     {
         Cohort::create(
             [
-                'name' => 'testcohort',
-                'schoolyear' => '1',
-                'crebo_id' => 1,
+                'startyear' => '2014',
+                'endyear' => '2017',
             ]);
     }
 }

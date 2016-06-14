@@ -14,11 +14,13 @@ class CreateEducationOffersTable extends Migration
     {
         Schema::create('education_offers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('education_id');
+            $table->string('name');
             $table->unsignedInteger('cohort_id');
             $table->foreign('cohort_id')->references('id')->on('cohorts')->onDelete('cascade');
             $table->unsignedInteger('location_id');
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->unsignedInteger('crebo_id');
+            $table->foreign('crebo_id')->references('id')->on('crebos')->onDelete('cascade');
 
             $table->timestamps();
         });

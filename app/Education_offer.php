@@ -9,7 +9,8 @@ class Education_offer extends Model
 	protected $fillable
 		= [
 			'education_id',
-			'schoolyear',
+			'startyear',
+			'endyear',
 			'location_id',
 			'cohort_id'
 		];
@@ -30,5 +31,11 @@ class Education_offer extends Model
 	function internships ()
 	{
 		return $this->hasMany('App\Internship');
+	}
+	
+	public
+	function crebos ()
+	{
+		return $this->belongsTo ('App\Crebo');
 	}
 }

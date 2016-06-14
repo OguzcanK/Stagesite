@@ -14,9 +14,10 @@ class Education_offersTableSeeder extends Seeder
     {
         Education_offer::create(
             [
-                'education_id' => 1234,
+                'name' => 1234,
                 'cohort_id' => 1,
                 'location_id' => 1,
+                'crebo_id' => 1,
             ]);
     }
 }

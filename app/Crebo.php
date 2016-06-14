@@ -15,7 +15,7 @@ class Crebo extends Model
 	public
 	function cohorts ()
 	{
-		return $this->hasMany ('App\Cohort');
+		return $this->hasMany ('App\Education_offer');
 	}
 
 }

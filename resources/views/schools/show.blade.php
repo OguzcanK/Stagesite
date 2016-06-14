@@ -4,59 +4,94 @@
 
 @section('content')
 
-    <table class="table">
-    <thead>
-      <tr>
-        <th>Scholen</th>
-      </tr>
-    </thead>
-
-        <tbody>
-      <tr>
-          <td>
-              {{ $school->name }}
-          </td>
-      </tr>
-@foreach ($addresses as $array)
-    @foreach ($array as $address)
-
-                    <tr>
-        <td>
-            <p>
-                street:<br>
-                Streetnumber:<br>
-                postcode:<br>
-                state:
-            </p>
-        </td>
-        <td>
-             {{ $address->street }}<br>
-            {{ $address->streetnumber }}<br>
-            {{ $address->postcode }}<br>
-            {{ $address->state }}
-        </td>
-      </tr>
-        <tr>
-            <td><a href="{{ route('location.edit', $address->id) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
-
-            <td>
-                {!! Form::open(['route' => ['location.destroy', $address->id], 'method' => 'delete', 'class'=>'delete inline']) !!}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>
+                <a href="{{ route('school.index') }}">Go back</a>
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <h3>
+            {{ $school->name }}
+        </h3>
+    </div>
+    @foreach ($addresses as $array)
+        @foreach ($array as $address)
+            <div class="row">
+                <div class="col-md-5">
+                    street:<br>
+                    Streetnumber:<br>
+                    postcode:<br>
+                    state:
+                </div>
+                <div class="col-md-5">
+                    {{ $address->street }}<br>
+                    {{ $address->streetnumber }}<br>
+                    {{ $address->postcode }}<br>
+                    {{ $address->state }}
+                </div>
+                <div class="col-md-1">
+                    <a href="{{ route('location.edit', $address->id) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                </div>
+                <div class="col-md-1">
+                    {!! Form::open(['route' => ['location.destroy', $address->id], 'method' => 'delete', 'class'=>'delete inline']) !!}
                     {!! Form::submit("trash", ['class' => 'btn btn-danger delete ']) !!}
-                {!! Form::close() !!}</td>
-        </tr>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        @endforeach
     @endforeach
-@endforeach
-            <tr>
-            <td>
-                <h3>Add a location</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Add a location</h4>
 
-                {!! Form::open(['route' => 'location.store']) !!}
-                @include('locations.forms.location')
-                {!! Form::close() !!}
-                </td>
-                @if($education_offers != NULL && $cohorts != NULL && $crebos != NULL)
-                    @foreach ($education_offers as $array)
-                        @foreach ($array as $education_offer)
+            {!! Form::open(['route' => 'location.store']) !!}
+            @include('locations.forms.location')
+            {!! Form::close() !!}
+        </div>
+    </div>
+    <div class="row">
+        @if($education_offers != NULL && $cohorts != NULL && $crebos != NULL)
+            @foreach ($education_offers as $array)
+                @foreach ($array as $education_offer)
+                    @if(isset($cohorts))
+                        @foreach ($cohorts as $array)
+                            @foreach ($array as $cohort)
+                                <div class="col-lg-3">
+                                    Cohort start: <br>
+                                    Cohort end:
+                                </div>
+                                <div class="col-lg-3">
+                                    {{ $cohort->name }} <br>
+                                    {{ $cohort->schoolyear }}
+                                </div>
+                                    @foreach ($crebos as $array)
+                                        @foreach ($array as $crebo)
+                                            <div class="col-lg-3">
+                                                Crebo name: <br>
+                                                Crebo number:
+                                            </div>
+                                            <div class="col-lg-3">
+                                                {{ $crebo->name }}<br>
+                                                {{ $crebo->number }}
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <a href="{{ route('crebo.edit', ['crebo' => $crebo->id]) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                                            </div>
+                                        @endforeach
+                                    @endforeach
+                            @endforeach
+                        @endforeach
+                    @endif
+                @endforeach
+            @endforeach
+        @else
+            Make a connection here <br>
+        @endif
+    </div>
+
+
 
                             {{--<td>
             <p>
@@ -64,52 +99,11 @@
                 {{ $education_offer->education_id }}
             </p>
         </td>--}}
-                            @if(isset($cohorts))
-                                <td>
-                                @foreach ($cohorts as $array)
-                                    @foreach ($array as $cohort)
-                                        <td>
-                        Cohort name: <br>
-                        Cohort Schoolyear:
-                    </td>
-                                        <td>
-                        {{ $cohort->name }} <br>
-                                            {{ $cohort->schoolyear }}
-                    </td>
-                                        @foreach ($crebos as $array)
-                                            @foreach ($array as $crebo)
-                                                <td>
-                        Crebo name: <br>
-                        Crebo number:
-                    </td>
-                                                <td>
-                        {{ $crebo->name }}<br>
-                                                    {{ $crebo->number }}
-                    </td>
-                                                <td>
-                                                    <a href="{{ route('crebo.edit', ['crebo' => $crebo->id]) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                                                </td>
-                                            @endforeach
-                                        @endforeach
-                                    @endforeach
-                                @endforeach
-                                {{ $cohort->name }}<br>
-                                </td>
-                            @endif
 
-                        @endforeach
-                    @endforeach
 
-                @else
-                    Make a connection here <br>
-                @endif
 
-        </tr>
+
         {{--School information above--}}
-
-        <a href="{{ route('school.index') }}">Go back</a>
-    </tbody>
-  </table>
 
 @stop
 

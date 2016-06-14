@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Company;
 use App\Contact;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
-    //
+
     public function index()
     {
         $contacts = Contact::all();
@@ -21,8 +22,9 @@ class ContactController extends Controller
     {
 
         $contact = Contact::findOrFail($contact);
+        $company = Company::findOrFail($contact->company_id);
 
-        return view('contact.show', compact('contact'));
+        return view('contact.show', compact('contact', 'company'));
     }
 
     public function create()

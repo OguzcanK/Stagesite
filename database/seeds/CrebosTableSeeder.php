@@ -14,8 +14,8 @@ class CrebosTableSeeder extends Seeder
     {
         Crebo::create(
             [
-                'name' => 'iets',
-                'number' => 1234,
+                'name' => 'applicatie ontwikkelaar',
+                'number' => 95311,
             ]);
 
     }
