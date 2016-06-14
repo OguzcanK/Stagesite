@@ -14,6 +14,7 @@ class CreateInternshipsTable extends Migration
     {
         Schema::create('internships', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->date('begin');
             $table->date('end')->nullable();
             $table->unsignedInteger('status_id');
