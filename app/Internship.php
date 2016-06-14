@@ -15,7 +15,7 @@ class Internship extends Model
 	];
 
 	public
-	function contacts ()
+	function contact ()
 	{
 		return $this->belongsTo('App\Contact');
 	}
