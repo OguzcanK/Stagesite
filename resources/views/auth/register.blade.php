@@ -10,16 +10,15 @@
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             {!! csrf_field() !!}
 
-                            <div class="form-group{{ $errors->has('Firstname') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Firstname</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="Firstname"
-                                           value="{{ old('Firstname') }}">
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 
-                                    @if ($errors->has('Firstname'))
+                                    @if ($errors->has('name'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('Firstname') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -112,33 +111,16 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Firstname</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-
-                                    @if ($errors->has('name'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
                             <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Role</label>
-
+                                <label class="col-md-6 control-label">Role</label>
                                 <?php
                                 $roles = \App\Role::all();
-
                                 ?>
-
                                 <select class="form-control" name="role_id">
                                     @foreach($roles as $role)
-                                        <?php
-                                        dd($role);
-                                        ?>
+                                        @if($role->role != 'admin')
+                                    <option value="{{$role->role}}">{{$role->role}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 <div class="col-md-6">
