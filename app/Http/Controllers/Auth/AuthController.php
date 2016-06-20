@@ -51,13 +51,13 @@ class AuthController extends Controller
 	function validator (array $data)
 	{
 		return Validator::make ($data, [
-			'name'     => 'required|max:255',
-			'comapnyname'     => 'required|max:255',
-			'comapanynumber'     => 'required|max:11',
-			'Surename'     => 'required|max:255',
-			'Phonenumber'     => 'required|max:255',
-			'email'    => 'required|email|max:255|unique:users',
-			'password' => 'required|min:6|confirmed',
+			'name'           => 'required|max:255',
+			'comapnyname'    => 'required|max:255',
+			'comapanynumber' => 'required|max:11',
+			'Surename'       => 'required|max:255',
+			'Phonenumber'    => 'required|max:255',
+			'email'          => 'required|email|max:255|unique:users',
+			'password'       => 'required|min:6|confirmed',
 		]);
 	}
 
@@ -75,18 +75,21 @@ class AuthController extends Controller
 		{
 			if (isset($data['comapnyname'], $data['comapanynumber']) && !empty($data['comapnyname']) && !empty($data['comapanynumber']))
 			{
-				$Company = Company::create ([
-												'name'        => $data['comapnyname'],
-												'phonenumber' => $data['comapanynumber'],
-											]);
-				$contact = Contact::create ([
-												'firstname'   => $data['name'],
-												'insertion'   => $data['insertion'],
-												'lastname'    => $data['Surename'],
-												'email'       => $data['email'],
-												'phonenumber' => $data['Phonenumber'],
-												'conmpany_id' => $Company->id,
-											]);
+				if ($data['role_id'] == 5)
+				{
+					$Company = Company::create ([
+													'name'        => $data['comapnyname'],
+													'phonenumber' => $data['comapanynumber'],
+												]);
+					$contact = Contact::create ([
+													'firstname'   => $data['name'],
+													'insertion'   => $data['insertion'],
+													'lastname'    => $data['Surename'],
+													'email'       => $data['email'],
+													'phonenumber' => $data['Phonenumber'],
+													'conmpany_id' => $Company->id,
+												]);
+				}
 			}
 			else
 			{
@@ -101,9 +104,10 @@ class AuthController extends Controller
 		}
 		else
 		{
-			if ($data['role_id'] == 5)
+
+			if (isset($data['comapnyname'], $data['comapanynumber']) && !empty($data['comapnyname']) && !empty($data['comapanynumber']))
 			{
-				if (isset($data['comapnyname'], $data['comapanynumber']) && !empty($data['comapnyname']) && !empty($data['comapanynumber']))
+				if ($data['role_id'] == 5)
 				{
 					$Company = Company::create ([
 													'name'        => $data['comapnyname'],
@@ -117,18 +121,18 @@ class AuthController extends Controller
 													'conmpany_id' => $Company->id,
 												]);
 				}
-				else
-				{
-					$contact = Contact::create ([
-													'firstname'   => $data['name'],
-													'lastname'    => $data['Surename'],
-													'email'       => $data['email'],
-													'phonenumber' => $data['Phonenumber'],
-												]);
-				}
+			}
+			else
+			{
+				$contact = Contact::create ([
+												'firstname'   => $data['name'],
+												'lastname'    => $data['Surename'],
+												'email'       => $data['email'],
+												'phonenumber' => $data['Phonenumber'],
+											]);
 			}
 		}
-		
+
 		return User::create ([
 								 'email'      => $data['email'],
 								 'password'   => bcrypt ($data['password']),
