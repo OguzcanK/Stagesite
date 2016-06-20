@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         User::create(
             [
-                'name' => 'admin',
+                'validation' => 1,
                 'email' => 'admin@admin.nl',
                 'password' => bcrypt('password'),
                 'role_id' => 1,
@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
 
         User::create(
             [
-                'name' => 'user',
+                'validation' => 0,
                 'email' => 'user@user.nl',
                 'password' => bcrypt('password'),
                 'role_id' => 2,
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
 
         User::create(
             [
-                'name' => 'student',
+                'validation' => 0,
                 'email' => 'student@student.nl',
                 'password' => bcrypt('password'),
                 'contact_id' => 1,
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
 
         User::create(
             [
-                'name' => 'teacher',
+                'validation' => 0,
                 'email' => 'teacher@teacher.nl',
                 'password' => bcrypt('password'),
                 'contact_id' => 1,
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
 
         User::create(
             [
-                'name' => 'practical trainer',
+                'validation' => 0,
                 'email' => 'practical@practical.nl',
                 'password' => bcrypt('password'),
                 'contact_id' => 1,

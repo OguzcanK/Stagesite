@@ -114,12 +114,12 @@
                             <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
                                 <label class="col-md-6 control-label">Role</label>
                                 <?php
-                                $roles = \App\Role::all();
+                                $roles = \App\Role::all ();
                                 ?>
                                 <select class="form-control" name="role_id">
                                     @foreach($roles as $role)
                                         @if($role->role != 'admin')
-                                    <option value="{{$role->role}}">{{$role->role}}</option>
+                                            <option value="{{$role->id}}">{{$role->role}}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -133,7 +133,35 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('comapnyname') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">comapnyname</label>
+                                <span class="col-md-12" style="text-align: center">Only required if you are a Practical Trainer</span>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('comapny') ? ' has-error' : '' }}">
+                                <label class="col-md-6 control-label">Company</label>
+                                <?php
+                                $companies = \App\Company::all ();
+                                ?>
+                                <select class="form-control" name="comapny">
+                                    @foreach($companies as $company)
+                                            <option value="{{$company->id}}">{{$company->name}}</option>
+                                    @endforeach
+                                </select>
+                                <div class="col-md-6">
+                                    @if ($errors->has('comapny'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('comapny') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('comapnyname') ? ' has-error' : '' }}">
+                                <span class="col-md-12" style="text-align: center">If you can't find your company in the list</span>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('comapnyname') ? ' has-error' : '' }}">
+
+                                <label class="col-md-4 control-label">comapny name</label>
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="comapnyname" value="{{ old('comapnyname') }}">
@@ -146,15 +174,15 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Firstname</label>
+                            <div class="form-group{{ $errors->has('comapanynumber') ? ' has-error' : '' }}">
+                                <label class="col-md-4 control-label">comapany number</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                    <input type="text" class="form-control" name="comapanynumber" value="{{ old('comapanynumber') }}">
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
-                                                <strong>{{ $errors->first('name') }}</strong>
+                                                <strong>{{ $errors->first('comapanynumber') }}</strong>
                                     </span>
                                     @endif
                                 </div>
