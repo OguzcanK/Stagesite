@@ -26,4 +26,11 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Web'], function() {
 });
 Route::auth();
 
+Route::get('/email', function() {
+	\Illuminate\Support\Facades\Mail::send('emails.test', ['name' => 'Testname'], function($message) {
+		$message->to('okarakoc.mp@gmail.com', 'some guy')->subject('Test succes');
+	});
+});
+
+
 Route::get('/home', 'HomeController@index');

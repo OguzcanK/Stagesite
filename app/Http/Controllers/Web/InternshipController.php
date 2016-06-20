@@ -18,23 +18,26 @@ use Illuminate\Support\Facades\DB;
 class InternshipController extends Controller
 {
     public function create(){
+            $company = Contact::all ();
 
-        $company = Contact::all();
+            $companyArray = [];
 
-        $companyArray = [];
+            $status = Status::all ();
 
-        $status = Status::all();
-
-        $statusArray = [];
+            $statusArray = [];
 
 
-        foreach($status as $state){
-            $statusArray[$state->id] = $state->name;
-        }
-        foreach($company as $c){
-            $companyArray[$c->id] = $c->firstname. " ". $c->surename;
-        }
-        return view('Internships.create', compact('companyArray', 'statusArray'));
+            foreach ($status as $state)
+            {
+                $statusArray[$state->id] = $state->name;
+            }
+            foreach ($company as $c)
+            {
+                $companyArray[$c->id] = $c->firstname." ".$c->surename;
+            }
+
+            return view ('Internships.create', compact ('companyArray', 'statusArray'));
+
     }
 
     public function edit($internship){

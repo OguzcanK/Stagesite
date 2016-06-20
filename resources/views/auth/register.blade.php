@@ -18,7 +18,7 @@
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                                <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -127,6 +127,34 @@
                                     @if ($errors->has('role_id'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('role_id') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('comapnyname') ? ' has-error' : '' }}">
+                                <label class="col-md-4 control-label">comapnyname</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="comapnyname" value="{{ old('comapnyname') }}">
+
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                                <strong>{{ $errors->first('comapnyname') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label class="col-md-4 control-label">Firstname</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                                <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                     @endif
                                 </div>
