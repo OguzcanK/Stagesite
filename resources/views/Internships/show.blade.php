@@ -52,7 +52,10 @@
                         <div class="well">
 
                             {{ $review->mark }}<br>
-                            {{ $review->review }}
+                            {{ $review->review }}<br>
+                            <a href="{{ route('review.edit', $review->id) }}" class="btn btn-info">Verander</a>
+                            <a href="{{ route('review.destroy', $review->id) }}" data-token="{{ csrf_token() }}" class="delete btn btn-danger">verwijderen</a>
+                            </a>
                             </div>
                             @endforeach
                             @endforeach

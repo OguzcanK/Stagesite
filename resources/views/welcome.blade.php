@@ -8,8 +8,30 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
+                    <div>
+                        {!! Form::open(['url' => ['/search/'], 'method' => 'POST']) !!}
+
+                        <fieldset class="col-md-12">
+                            <legend>filteren</legend>
+                            <div class="form-group ">
+                                {!! Form::label('zoekt', 'zoekt stagiair') !!}
+                                {!! Form::Checkbox('zoekt', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('done', 'zijn er al stagiairs geweest') !!}
+                                {!! Form::checkbox('done', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </fieldset>
+
+                        <div class="form-group col-md-6">
+                            {!! Form::submit('zoek bedrijven!', ['class' => 'btn btn-primary form-control ']) !!}
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
+                    </div>
+                <div class="panel-body">
                     @foreach($company as $c)
-                        <div class="well-lg">
+                        <div class="well-lg col-md-12">
                             <p><h1>Bedrijf:</h1>
                                 <h2>{{ $c->name }}</h2>
                             </p>
@@ -28,12 +50,12 @@
                                             </p>
 
                                             <p>Status:
-                                                {{ $internship->status->name }} {{ $internship->contact->firstname }}
+                                                {{ $internship->status->name }}
                                             </p>
                                                 <a href="{{ route('internship.show', $internship->id) }}" class="btn btn-primary">Lees meer</a>
                                                 <a href="{{ route('internship.edit', $internship->id) }}" class="btn btn-info">Verander</a>
                                                 <a href="{{ route('internship.destroy', $internship->id) }}" data-token="{{ csrf_token() }}" class="delete btn btn-danger">verwijderen</a>
-                                            </a>
+                                                </a>
                                             </div>
                                             @endforeach
                                     @endforeach

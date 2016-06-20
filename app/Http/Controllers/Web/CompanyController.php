@@ -44,4 +44,5 @@ class CompanyController extends Controller
         
         return view('company.edit', compact('company'));
     }
+
 }
