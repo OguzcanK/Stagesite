@@ -17,7 +17,6 @@ class CreboController extends Controller
 	}
 	
 	public function create($school) {
-		
 		return view ('crebos.create', compact ('school'));
 	}
 }

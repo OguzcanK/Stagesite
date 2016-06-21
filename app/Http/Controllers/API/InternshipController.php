@@ -27,7 +27,7 @@ class InternshipController extends Controller
             ]);
 
         $company = Company::all();
-        return view('welcome', compact('company'));
+        return view('master', compact('company'));
     }
 
     public function update(Request $request, $internship){
@@ -39,7 +39,7 @@ class InternshipController extends Controller
 
         $internship->update($input);
         $company = Company::all();
-        return view('welcome', compact('company'));
+        return view('master', compact('company'));
     }
 
     public function destroy($internship){

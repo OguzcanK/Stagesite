@@ -22,6 +22,6 @@ class StatusController extends Controller
             ]);
 
         $company = Company::all();
-        return view('welcome', compact('company'));
+        return view('master', compact('company'));
     }
 }

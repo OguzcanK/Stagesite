@@ -51,7 +51,7 @@
             {!! Form::close() !!}
         </div>
     </div>
-    <div class="row">
+    {{--<div class="row">
         @if($education_offers != NULL && $cohorts != NULL && $crebos != NULL)
             @foreach ($education_offers as $array)
                 @foreach ($array as $education_offer)
@@ -89,7 +89,7 @@
         @else
             Make a connection here <br>
         @endif
-    </div>
+    </div>--}}
 
 
 
