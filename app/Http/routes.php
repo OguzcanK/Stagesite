@@ -12,6 +12,7 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Web'], function() {
 	Route::resource('tool', 'ToolController', ['only' => ['index', 'show', 'create', 'edit']]);
 	Route::resource('company', 'CompanyController', ['only' => ['index', 'show', 'create', 'edit']]);
 	Route::resource('contact', 'ContactController', ['only' => ['index', 'show', 'create', 'edit']]);
+	Route::resource('profile', 'ProfileController', ['only' =>['index', 'show', 'edit']]);
 });
 
 Route::group(['middleware' => ['web','api'], 'namespace' => 'API'], function() {
@@ -25,6 +26,7 @@ Route::group(['middleware' => ['web','api'], 'namespace' => 'API'], function() {
 	Route::resource('tool', 'ToolController', ['only' => ['store', 'update', 'destroy']]);
 	Route::resource('review', 'ReviewController', ['only' => ['store', 'update', 'destroy']]);
 	Route::resource('student', 'StudentController', ['only' => ['store', 'update']]);
+	Route::resource('profile', 'ProfileController', ['only' =>['update']]);
 });
 Route::auth();
 
