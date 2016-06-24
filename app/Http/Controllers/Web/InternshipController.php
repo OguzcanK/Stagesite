@@ -17,60 +17,79 @@ use Illuminate\Support\Facades\DB;
 
 class InternshipController extends Controller
 {
-    public function create(){
-            $company = Contact::all ();
+	public
+	function create ()
+	{
+		$company = Contact::all ();
 
-            $companyArray = [];
+		$companyArray = [];
 
-            $status = Status::all ();
+		$status = Status::all ();
 
-            $statusArray = [];
-
-
-            foreach ($status as $state)
-            {
-                $statusArray[$state->id] = $state->name;
-            }
-            foreach ($company as $c)
-            {
-                $companyArray[$c->id] = $c->firstname." ".$c->surename;
-            }
-
-            return view ('Internships.create', compact ('companyArray', 'statusArray'));
-
-    }
-
-    public function edit($internship){
+		$statusArray = [];
 
 
-        $internship = Internship::findorfail($internship);
-        $contacts = Contact::all();
+		foreach ($status as $state)
+		{
+			$statusArray[$state->id] = $state->name;
+		}
+		foreach ($company as $c)
+		{
+			$companyArray[$c->id] = $c->firstname." ".$c->surename;
+		}
 
-        $contactArray = [];
+		return view ('Internships.create', compact ('companyArray', 'statusArray'));
+	}
 
-        $status = Status::all();
+	public
+	function edit ($internship)
+	{
+		$internship = Internship::findorfail ($internship);
+		$contacts   = Contact::all ();
 
-        $statusArray = [];
+		$contactArray = [];
 
-        foreach($status as $state){
-            $statusArray[$state->id] = $state->name;
-        }
-        foreach($contacts as $contact){
-            $contactArray[$contact->id] = $contact->firstname ." ". $contact->surename;
-        }
+		$status = Status::all ();
 
-        return view('Internships.edit', compact('internship', 'contactArray', 'statusArray'));
-    }
+		$statusArray = [];
 
-    public function show($internship){
-        $internship = Internship::findorfail($internship);
+		foreach ($status as $state)
+		{
+			$statusArray[$state->id] = $state->name;
+		}
+		foreach ($contacts as $contact)
+		{
+			$contactArray[$contact->id] = $contact->firstname." ".$contact->surename;
+		}
 
-        $internshipUsers = DB::table ('internship_users')->where ('internship_id', $internship->id)->get ();
-        //$reviews = DB::table ('reviews')->where ('internship_user_id', $internshipUsers->id)->all();
-        foreach ($internshipUsers as $review) {
-            $reviews[] = DB::table ('reviews')->where ('internship_user_id', $review->id)->get ();
-        }
-        return view('Internships.show', compact('internship', 'reviews'));
+		return view ('Internships.edit', compact ('internship', 'contactArray', 'statusArray'));
+	}
 
-    }
+	public
+	function show ($internship)
+	{
+		$internship = Internship::findorfail ($internship);
+
+		$internshipUsers = DB::table ('internship_users')->where ('internship_id', $internship->id)->get ();
+		//$reviews = DB::table ('reviews')->where ('internship_user_id', $internshipUsers->id)->all();
+		foreach ($internshipUsers as $review)
+		{
+			$reviews[] = DB::table ('reviews')->where ('internship_user_id', $review->id)->get ();
+		}
+
+		return view ('Internships.show', compact ('internship', 'reviews'));
+	}
+	
+	public 
+	function add($stage)
+	{
+		if (Auth::user()->getRole() == 'student'){
+
+			$contact = DB::table ('contacts')->where ('id', Auth::user()->contact_id)->get ();
+			dd($contact);
+			DB::table('contacts')
+			  ->where('id', 1)
+			  ->update(['votes' => 1]);
+		}
+	}
 }

@@ -22,7 +22,6 @@
                                                 </p>
                                             </div>
 
-
                     <div class="panel-body">
                         {!! Form::open(['url' => ['review'], 'method' => 'POST']) !!}
 
@@ -30,14 +29,14 @@
                             <legend>New review</legend>
                             <div class="form-group ">
                                 {!! Form::label('mark', 'Cijfer:*') !!}
-                                {!! Form::text('mark', null, ['class' => 'form-control', 'required']) !!}
+                                {!! Form::text('mark', NULL, ['class' => 'form-control', 'required']) !!}
                             </div>
                             <div class="form-group ">
                                 {!! Form::label('review', 'review:*') !!}
-                                {!! Form::textarea('review', null, ['class' => 'form-control', 'required']) !!}
+                                {!! Form::textarea('review', NULL, ['class' => 'form-control', 'required']) !!}
                             </div>
 
-                                {!! Form::hidden('internship_id',$internship->id, null, ['class' => 'form-control', 'required']) !!}
+                            {!! Form::hidden('internship_id',$internship->id, NULL, ['class' => 'form-control', 'required']) !!}
 
                         </fieldset>
 
@@ -47,24 +46,24 @@
                         {!! Form::close() !!}
                     </div>
                         @if(!empty($reviews))
-                        @foreach ($reviews as $array)
-                            @foreach ($array as $review)
-                        <div class="well">
+                            @foreach ($reviews as $array)
+                                @foreach ($array as $review)
+                                    <div class="well">
 
                             {{ $review->mark }}<br>
-                            {{ $review->review }}<br>
+                                        {{ $review->review }}<br>
                             <a href="{{ route('review.edit', $review->id) }}" class="btn btn-info">Verander</a>
                             <a href="{{ route('review.destroy', $review->id) }}" data-token="{{ csrf_token() }}" class="delete btn btn-danger">verwijderen</a>
-                            </a>
+                                        </a>
                             </div>
+                                @endforeach
                             @endforeach
-                            @endforeach
-                            @endif
+                        @endif
                                     </div>
                             </div>
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
     </div>
 @endsection

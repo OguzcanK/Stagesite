@@ -19,8 +19,12 @@ class CreboController extends Controller
 	function validator ($data = [])
 	{
 		return Validator::make ($data, [
-			'number' => 'required',
-			'name'   => 'required',
+			'number'    => 'required',
+			'name'      => 'required',
+			'startyear' => 'required',
+			'endyear'   => 'required',
+			'school'    => 'required',
+			'location'  => 'required',
 		]);
 	}
 
@@ -37,15 +41,15 @@ class CreboController extends Controller
 		else
 		{
 			//$locations = DB::table ('addresses')->where ('id', $address->id)->get ('location_id');
-			$cohort = Cohort::where ('crebo_id', $crebo)->pluck ('id')->first();
+			$cohort = Cohort::where ('crebo_id', $crebo)->pluck ('id')->first ();
 
-			$locationid = Education_offer::where ('cohort_id', $cohort)->pluck ('location_id')->first();
+			$locationid = Education_offer::where ('cohort_id', $cohort)->pluck ('location_id')->first ();
 
-			$schoolid = Location::where ('id', $locationid)->pluck('school_id')->first();
+			$schoolid = Location::where ('id', $locationid)->pluck ('school_id')->first ();
 
-			$school = School::findorfail($schoolid);
+			$school = School::findorfail ($schoolid);
 
-			$crebo = Crebo::findorFail($crebo);
+			$crebo = Crebo::findorFail ($crebo);
 			$crebo->update ($input);
 		}
 
@@ -63,8 +67,9 @@ class CreboController extends Controller
 		}
 		else
 		{
-			$crebo = Crebo::create($input);
-			dd($crebo);
+			dd ($input);
+			$crebo = Crebo::create ($input);
+			dd ($crebo);
 		}
 
 		return redirect (route ('school.show', compact ('school')));
