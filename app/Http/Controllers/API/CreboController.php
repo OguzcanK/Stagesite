@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class CreboController extends Controller
@@ -24,36 +25,19 @@ class CreboController extends Controller
 			'startyear' => 'required',
 			'endyear'   => 'required',
 			'school'    => 'required',
-			'location'  => 'required',
+			'location'  => 'required'
 		]);
 	}
 
 	public
-	function update (Request $request, $crebo)
+	function destroy ($education)
 	{
-		$input = $request->all ();
-
-		$validate = $this->Validator ($input);
-		if ($validate->fails ())
+		if (Education_offer::destroy ($education))
 		{
-			$this->throwValidationException ($request, $validate);
-		}
-		else
-		{
-			//$locations = DB::table ('addresses')->where ('id', $address->id)->get ('location_id');
-			$cohort = Cohort::where ('crebo_id', $crebo)->pluck ('id')->first ();
-
-			$locationid = Education_offer::where ('cohort_id', $cohort)->pluck ('location_id')->first ();
-
-			$schoolid = Location::where ('id', $locationid)->pluck ('school_id')->first ();
-
-			$school = School::findorfail ($schoolid);
-
-			$crebo = Crebo::findorFail ($crebo);
-			$crebo->update ($input);
+			return redirect (route ('crebo.index'));
 		}
 
-		return redirect (route ('school.show', compact ('school')));
+		return response (0, 200);
 	}
 
 	public
@@ -67,11 +51,30 @@ class CreboController extends Controller
 		}
 		else
 		{
-			dd ($input);
-			$crebo = Crebo::create ($input);
-			dd ($crebo);
-		}
 
-		return redirect (route ('school.show', compact ('school')));
+			$loc = $input['location'];
+			$location = $users = DB::table('addresses')->select('location_id')->where('street', $loc)->get();
+
+			$crebo = DB::table ('crebos')->insertGetId (
+				[
+					'name'   => $input['name'],
+					'number' => $input['number'],
+				]);
+
+			$cohort = DB::table ('cohorts')->insertGetId (
+				[
+					'startyear' => $input['startyear'],
+					'endyear'   => $input['endyear'],
+				]);
+
+			DB::table ('education_offers')->insert (
+				[
+					'name' => $input['school'] . " " . $input['location'] . " " . $input['name'] . "(" . $input['number'] . ") " . $input['startyear'] . " " . $input['endyear'] ,
+					'crebo_id' => $crebo ,
+					'cohort_id' => $cohort ,
+					'location_id' => $location[0]->location_id
+				]);
+		}
+		return redirect (route ('crebo.index'));
 	}
 }

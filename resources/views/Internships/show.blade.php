@@ -20,6 +20,10 @@
                                                 <p>Status:
                                                     {{ $internship->status->name }}
                                                 </p>
+                                                {!! Form::open(['route' => 'school.store']) !!}
+                                                    {!! Form::hidden('internship_id',$internship->id, NULL, ['class' => 'form-control', 'required']) !!}
+                                                    {!! Form::submit('Stage lopen', ['class' => 'btn btn-primary form-control ']) !!}
+                                                {!! Form::close() !!}
                                             </div>
 
                     <div class="panel-body">

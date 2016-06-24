@@ -24,6 +24,7 @@ Route::group(['middleware' => ['web','api'], 'namespace' => 'API'], function() {
 	Route::resource('company', 'CompanyController', ['only' => ['store', 'update', 'destroy']]);
 	Route::resource('tool', 'ToolController', ['only' => ['store', 'update', 'destroy']]);
 	Route::resource('review', 'ReviewController', ['only' => ['store', 'update', 'destroy']]);
+	Route::resource('student', 'StudentController', ['only' => ['store', 'update']]);
 });
 Route::auth();
 

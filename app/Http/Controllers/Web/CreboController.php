@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Crebo;
+use App\Education_offer;
 use App\School;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,7 @@ class CreboController extends Controller
 				'location' => $addresses
 			];
 		}
+		
 
 		return view ('crebos.create', compact ('school_all_info'));
 	}
@@ -45,10 +47,8 @@ class CreboController extends Controller
 	public
 	function index ()
 	{
-		$crebos = Crebo::all ();
+		$infos = Education_offer::all();
 
-		dd ($crebos);
-
-		return view ('crebos.index', compact ('crebos'));
+		return view ('crebos.index', compact ('infos'));
 	}
 }

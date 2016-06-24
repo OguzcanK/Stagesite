@@ -48,4 +48,14 @@ class User extends Authenticatable
 			return $contact->firstname;
 		}
 	}
+
+	public
+	function loopStage ()
+	{
+		if (Auth::check ())
+		{
+			
+		}
+	}
+
 }
