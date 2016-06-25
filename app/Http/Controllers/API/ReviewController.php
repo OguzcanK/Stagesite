@@ -29,4 +29,12 @@ class ReviewController extends Controller
 
         return redirect()->back();
     }
+
+    public function update(Request $request, $review){
+        $input = $request->all();
+        $review = Review::findorfail($review);
+
+        $review->update($input);
+        return redirect (route ('index'));
+    }
 }
