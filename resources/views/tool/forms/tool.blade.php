@@ -11,5 +11,10 @@
 @include('errors.validateError', ['errorName' => 'description'])
 
 <div class="form-group">
+    {!! Form::label('Status', 'Status:') !!}
+    {!! Form::select('status_id', $statusArray, null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::submit('Submit', array('class' => 'btn btn-primary form-control')) !!}
 </div>

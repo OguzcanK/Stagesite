@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Status;
 use App\Tool;
 use Illuminate\Http\Request;
 
@@ -21,18 +22,46 @@ class ToolController extends Controller
 
         $tool = Tool::findOrFail($tool);
 
-        return view('tool.show', compact('tool'));
+        $status = Status::findorFail($tool->status_id);
+        
+        return view('tool.show', compact('tool', 'status'));
     }
 
     public function create()
     {
-        return view('tool.create');
+        $status = Status::all ();
+
+        $statusArray = [];
+
+
+        foreach ($status as $state)
+        {
+            if ($state->categorie_id == 2)
+            {
+                $statusArray[$state->id] = $state->name;
+            }
+        }
+        
+        return view('tool.create', compact('statusArray'));
     }
 
     public function edit($tool)
     {
-        $tool = Tool::findOrFail($tool);
+        $status = Status::all ();
 
-        return view('tool.edit', compact('tool'));
+        $statusArray = [];
+
+
+        foreach ($status as $state)
+        {
+            if ($state->categorie_id == 2)
+            {
+                $statusArray[$state->id] = $state->name;
+            }
+        }
+
+        $tool = Tool::findOrFail($tool);
+        return view('tool.edit', compact('tool', 'statusArray'));
+
     }
 }

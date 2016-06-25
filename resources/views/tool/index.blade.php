@@ -3,19 +3,27 @@
 @section('title', 'Tool')
 
 @section('content')
-    <h1>Tools</h1>
-    <div class="contact-wrapper">
-        @foreach($tool as $tools)
-            <div class="well">
-                <a href="{{ route('tool.show', $tools->id) }}">
-                    {{ $tools->name }}
 
-                </a>
-                <a href="{{ route('tool.destroy', $tools->id) }}" data-token="{{ csrf_token() }}" class="delete">Verwijderen</a>
-                <a href="{{ route('tool.edit', $tools->id) }}">Wijzig</a>
-            </div>
-        @endforeach
+
+    <div class="row">
+        <div>
+            <h2>Tools</h2>
+        </div>
     </div>
-
-
+    @foreach($tool as $tools)
+        <div class="row">
+            <a href="{{ route('tool.show', $tools->id) }}" class="btn btn-link">
+                <div class="col-md-12">
+                    {{ $tools->name }}
+                    <div style="float:right;">
+                        <a href="{{ route('tool.edit', $tools->id) }}" class="btn btn-default"> <span
+                                    class="glyphicon glyphicon-pencil"></span></a>
+                        {!! Form::open(['route' => ['tool.destroy', $tools->id], 'method' => 'delete', 'class'=>'delete inline']) !!}
+                        {!! Form::submit("trash", ['class' => 'btn btn-danger delete ']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </a>
+        </div>
+    @endforeach
 @stop
