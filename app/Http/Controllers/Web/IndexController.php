@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
-    public function show(){
-
+    public function index(){
+        
         $company = Company::all();
 
         return view('welcome', compact('company'));

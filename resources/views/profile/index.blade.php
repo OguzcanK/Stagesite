@@ -26,4 +26,10 @@
             @endif
         </div>
     </div>
+    <div>
+        <a href="{{ route('contact.edit', $profile->id) }}" class="btn btn-default"> <span class="glyphicon glyphicon-pencil"></span></a>
+        {!! Form::open(['route' => ['contact.destroy', $profile->id], 'method' => 'delete', 'style' => 'display:inline']) !!}
+        {!! Form::submit("trash", ['class' => 'btn btn-danger delete']) !!}
+        {!! Form::close() !!}
+    </div>
 @endsection

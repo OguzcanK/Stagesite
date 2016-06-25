@@ -48,7 +48,7 @@ class SchoolController extends Controller
 
 		if (School::destroy ($school))
 		{
-			return view ();
+			return redirect (route ('school.index'));
 		}
 
 		return response (0, 200);

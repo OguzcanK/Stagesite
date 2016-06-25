@@ -24,9 +24,10 @@
                                 {!! Form::label('Status', 'Status:') !!}
                                 {!! Form::select('status_id', $statusArray, null, ['class' => 'form-control']) !!}
                             </div>
+
                             <div class="form-group">
-                                {!! Form::label('Contactpersoon', 'Contactpersoon:') !!}
-                                {!! Form::select('contact_id', $companyArray, null, ['class' => 'form-control']) !!}
+                                {!! Form::label('Education', 'Education:') !!}
+                                {!! Form::select('education_offer_id', $educationArray, null, ['class' => 'form-control']) !!}
                             </div>
                         </fieldset>
 

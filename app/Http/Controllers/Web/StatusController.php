@@ -26,10 +26,9 @@ class StatusController extends Controller
         return view('status.create', compact('categorieArray'));
     }
 
-    public function show(){
+    public function index(){
         $categories = Categorie::all();
-
-
+        
         $statusArray = [];
         $statusArray1 = [];
         $statusArray2 = [];
@@ -37,7 +36,7 @@ class StatusController extends Controller
         foreach($categories as $categorie){
             foreach($categorie->status as $status){
                 if($status->categorie_id == 1){
-                $statusArray[$status->id] = $status->name;
+                    $statusArray[$status->id] = $status->name;
                 }
                 elseif($status->categorie_id == 2){
                     $statusArray1[$status->id] = $status->name;
@@ -49,7 +48,15 @@ class StatusController extends Controller
             }
         }
 
-        return view('status.show', compact('statusArray', 'statusArray1', 'statusArray2'));
+        return view('status.index', compact('statusArray', 'statusArray1', 'statusArray2'));
+    }
+
+    public
+    function edit ($status)
+    {
+        $status = Status::findOrFail ($status);
+
+        return view ('status.edit', compact ('status'));
     }
 
 }

@@ -32,7 +32,8 @@
                 <div class="panel-body">
                     @foreach($company as $c)
                         <div class="well-lg col-md-12">
-                            <p><h1>Bedrijf:</h1>
+                            <p>
+                            <h1>Bedrijf:</h1>
                                 <h2>{{ $c->name }}</h2>
                             </p>
                                 <div>
@@ -52,10 +53,11 @@
                                             <p>Status:
                                                 {{ $internship->status->name }}
                                             </p>
-                                                <a href="{{ route('internship.show', $internship->id) }}" class="btn btn-primary">Lees meer</a>
-                                                <a href="{{ route('internship.edit', $internship->id) }}" class="btn btn-info">Verander</a>
-                                                <a href="{{ route('internship.destroy', $internship->id) }}" data-token="{{ csrf_token() }}" class="delete btn btn-danger">verwijderen</a>
-                                                </a>
+                                                <a href="{{ route('internship.show', $internship->id) }}" class="btn btn-primary">Read more</a>
+                                                <a href="{{ route('internship.edit', $internship->id) }}" class="btn btn-info">Edit</a>
+                                                {!! Form::open(['route' => ['internship.destroy', $internship->id], 'method' => 'delete', 'class'=>'delete inline']) !!}
+                                                {!! Form::submit("trash", ['class' => 'btn btn-danger delete ']) !!}
+                                                {!! Form::close() !!}
                                             </div>
                                             @endforeach
                                     @endforeach

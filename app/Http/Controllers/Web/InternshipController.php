@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Company;
 use App\Contact;
+use App\Crebo;
+use App\Education_offer;
 use App\Internship;
 use App\InternshipUser;
 use App\Status;
@@ -20,9 +22,11 @@ class InternshipController extends Controller
 	public
 	function create ()
 	{
-		$company = Contact::all ();
+		/*		$company = Contact::all ();
 
-		$companyArray = [];
+				$companyArray = [];*/
+
+		$education = Education_offer::all ();
 
 		$status = Status::all ();
 
@@ -31,23 +35,25 @@ class InternshipController extends Controller
 
 		foreach ($status as $state)
 		{
-			$statusArray[$state->id] = $state->name;
+			if ($state->categorie_id == 3)
+			{
+				$statusArray[$state->id] = $state->name;
+			}
 		}
-		foreach ($company as $c)
+		foreach ($education as $c)
 		{
-			$companyArray[$c->id] = $c->firstname." ".$c->surename;
+			$educationArray[$c->id] = $c->name;
 		}
 
-		return view ('Internships.create', compact ('companyArray', 'statusArray'));
+		return view ('Internships.create', compact ('educationArray', 'statusArray'));
 	}
 
 	public
 	function edit ($internship)
 	{
 		$internship = Internship::findorfail ($internship);
-		$contacts   = Contact::all ();
 
-		$contactArray = [];
+		$education = Education_offer::all ();
 
 		$status = Status::all ();
 
@@ -55,14 +61,17 @@ class InternshipController extends Controller
 
 		foreach ($status as $state)
 		{
-			$statusArray[$state->id] = $state->name;
+			if ($state->categorie_id == 3)
+			{
+				$statusArray[$state->id] = $state->name;
+			}
 		}
-		foreach ($contacts as $contact)
+		foreach ($education as $c)
 		{
-			$contactArray[$contact->id] = $contact->firstname." ".$contact->surename;
+			$educationArray[$c->id] = $c->name;
 		}
 
-		return view ('Internships.edit', compact ('internship', 'contactArray', 'statusArray'));
+		return view ('Internships.edit', compact ('internship', 'statusArray', 'educationArray'));
 	}
 
 	public
@@ -79,17 +88,18 @@ class InternshipController extends Controller
 
 		return view ('Internships.show', compact ('internship', 'reviews'));
 	}
-	
-	public 
-	function add($stage)
-	{
-		if (Auth::user()->getRole() == 'student'){
 
-			$contact = DB::table ('contacts')->where ('id', Auth::user()->contact_id)->get ();
-			dd($contact);
-			DB::table('contacts')
-			  ->where('id', 1)
-			  ->update(['votes' => 1]);
+	public
+	function add ($stage)
+	{
+		if (Auth::user ()->getRole () == 'student')
+		{
+
+			$contact = DB::table ('contacts')->where ('id', Auth::user ()->contact_id)->get ();
+			dd ($contact);
+			DB::table ('contacts')
+			  ->where ('id', 1)
+			  ->update (['votes' => 1]);
 		}
 	}
 }
