@@ -27,6 +27,11 @@
     {!! Form::text('phonenumber', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::label('Company', 'Company:') !!}
+    {!! Form::select('company_id', $companyArray, null, ['class' => 'form-control']) !!}
+</div>
+
 
 <div class="form-group">
     {!! Form::submit('Submit', array('class' => 'btn btn-primary form-control')) !!}

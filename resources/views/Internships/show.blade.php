@@ -20,6 +20,16 @@
                                                 <p>Status:
                                                     {{ $internship->status->name }}
                                                 </p>
+                                                <h3>Students</h3>
+                                                <blockquote>
+                                                    @if($internshipcontacts != NULL)
+                                                        @foreach($internshipcontacts as $internshipcontact)
+                                                            <p>{{$internshipcontact->firstname}} {{$internshipcontact->firstname}}</p>
+                                                        @endforeach
+                                                    @else
+                                                        No students
+                                                    @endif
+                                                </blockquote>
                                                 {!! Form::open(['route' => 'school.store']) !!}
                                                     {!! Form::hidden('internship_id',$internship->id, NULL, ['class' => 'form-control', 'required']) !!}
                                                     {!! Form::submit('Stage lopen', ['class' => 'btn btn-primary form-control ']) !!}

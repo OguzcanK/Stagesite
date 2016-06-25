@@ -9,6 +9,7 @@ use App\Education_offer;
 use App\Internship;
 use App\InternshipUser;
 use App\Status;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -79,6 +80,8 @@ class InternshipController extends Controller
 	{
 		$internship = Internship::findorfail ($internship);
 
+		$contacts = [];
+
 		$internshipUsers = DB::table ('internship_users')->where ('internship_id', $internship->id)->get ();
 		//$reviews = DB::table ('reviews')->where ('internship_user_id', $internshipUsers->id)->all();
 		foreach ($internshipUsers as $review)
@@ -86,7 +89,27 @@ class InternshipController extends Controller
 			$reviews[] = DB::table ('reviews')->where ('internship_user_id', $review->id)->get ();
 		}
 
-		return view ('Internships.show', compact ('internship', 'reviews'));
+		foreach ($internshipUsers as $internshipUser)
+		{
+				$usertmp = User::where (['id' => $internshipUser->user_id, 'role_id' => 3])->get ();
+				if ($usertmp[0]->role_id == 3)
+				{
+					$users[] = $usertmp[0];
+				}
+		}
+		if (isset($users))
+		{
+			foreach ($users as $user)
+			{
+				$tmp                  = DB::table ('contacts')->where ('id', $user->contact_id)->get ();
+				$internshipcontacts[] = $tmp[0];
+			}
+		}
+		else{
+			$internshipcontacts = NULL;
+		}
+
+		return view ('Internships.show', compact ('internship', 'reviews', 'internshipcontacts'));
 	}
 
 	public

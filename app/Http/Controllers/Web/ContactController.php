@@ -29,13 +29,28 @@ class ContactController extends Controller
 
     public function create()
     {
-        return view('contact.create');
+        $companies = Company::all ();
+
+        foreach ($companies as $company)
+        {
+            $companyArray[$company->id] = $company->name;
+        }
+        return view('contact.create', compact('contact', 'companyArray'));
+
     }
     
     public function edit($contact)
     {
+
+        $companies = Company::all ();
+
+		foreach ($companies as $company)
+        {
+                $companyArray[$company->id] = $company->name;
+        }
+
         $contact = Contact::findOrFail($contact);
 
-        return view('contact.edit', compact('contact'));
+        return view('contact.edit', compact('contact', 'companyArray'));
     }
 }
