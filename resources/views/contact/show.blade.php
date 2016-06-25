@@ -21,12 +21,21 @@
         <div class="col-md-6">
             Email:<br>
             Tel:<br>
+
+            @if($company != NULL)
             Company:
+            @elseif($school != NULL)
+            School:
+            @endif
         </div>
         <div class="col-md-6">
             {{ $contact->email }}<br>
             {{ $contact->phonenumber }}<br>
-            <a href="{{ route('company.show', $company->id) }}">{{ $company->name }}</a>
+            @if($company != NULL)
+                <a href="{{ route('company.show', $company->id) }}">{{ $company->name }}</a>
+            @elseif($school != NULL)
+                <a href="{{ route('school.show', $school->id) }}">{{ $school->name }}</a>
+            @endif
         </div>
     </div>
     <div>

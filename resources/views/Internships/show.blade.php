@@ -24,13 +24,15 @@
                                                 <blockquote>
                                                     @if($internshipcontacts != NULL)
                                                         @foreach($internshipcontacts as $internshipcontact)
-                                                            <p>{{$internshipcontact->firstname}} {{$internshipcontact->firstname}}</p>
+                                                            <a href="{{ Route('contact.show', $internshipcontact->id) }}">
+                                                                <p>{{$internshipcontact->firstname}} {{$internshipcontact->firstname}}</p>
+                                                            </a>
                                                         @endforeach
                                                     @else
                                                         No students
                                                     @endif
                                                 </blockquote>
-                                                {!! Form::open(['route' => 'school.store']) !!}
+                                                {!! Form::open(['route' => 'student.store']) !!}
                                                     {!! Form::hidden('internship_id',$internship->id, NULL, ['class' => 'form-control', 'required']) !!}
                                                     {!! Form::submit('Stage lopen', ['class' => 'btn btn-primary form-control ']) !!}
                                                 {!! Form::close() !!}

@@ -16,6 +16,12 @@ class Contact extends Model
     ];
 
     public
+    function schools ()
+    {
+        return $this->belongsTo('App\School');
+    }
+
+    public
     function companies ()
     {
         return $this->belongsTo('App\Company');

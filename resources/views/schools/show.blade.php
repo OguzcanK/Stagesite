@@ -43,6 +43,35 @@
         @endforeach
     @endforeach
     <div class="row">
+        <h3>Teachers</h3>
+        <blockquote>
+            @foreach($teachers as $teacher)
+                <a href="{{ Route('contact.show', $teacher->id) }}">
+                    @if(isset($teacher->insertion))
+                        {{ $teacher->firstname }} {{ $teacher->insertion }} {{ $teacher->surename }}
+                    @else
+                        {{ $teacher->firstname }} {{ $teacher->surename }}
+                    @endif
+                </a>
+            @endforeach
+        </blockquote>
+    </div>
+
+    <div class="row">
+        <h3>Students</h3>
+        <blockquote>
+            @foreach($students as $student)
+                <a href="{{ Route('contact.show', $student->id) }}">
+                    @if(isset($student->insertion))
+                        {{ $student->firstname }} {{ $student->insertion }} {{ $student->surename }}
+                    @else
+                        {{ $student->firstname }} {{ $student->surename }}
+                    @endif
+                </a>
+            @endforeach
+        </blockquote>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <h4>Add a location</h4>
 
@@ -51,6 +80,7 @@
             {!! Form::close() !!}
         </div>
     </div>
+
     {{--<div class="row">
         @if($education_offers != NULL && $cohorts != NULL && $crebos != NULL)
             @foreach ($education_offers as $array)

@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'user@user.nl',
                 'password' => bcrypt('password'),
                 'role_id' => 2,
-                'contact_id' => 1
+                'contact_id' => 2
             ]);
 
         User::create(
@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
                 'validation' => 0,
                 'email' => 'student@student.nl',
                 'password' => bcrypt('password'),
-                'contact_id' => 1,
+                'contact_id' => 3,
                 'role_id' => 3
             ]);
 
@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
                 'validation' => 0,
                 'email' => 'teacher@teacher.nl',
                 'password' => bcrypt('password'),
-                'contact_id' => 1,
+                'contact_id' => 4,
                 'role_id' => 4
             ]);
 
@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
                 'validation' => 0,
                 'email' => 'practical@practical.nl',
                 'password' => bcrypt('password'),
-                'contact_id' => 1,
+                'contact_id' => 5,
                 'role_id' => 5
             ]);
     }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class StudentController extends Controller
 {
@@ -38,8 +39,9 @@ class StudentController extends Controller
 										]);
 			}
 			$internship = $input['internship_id'];
+			$internship = (int)$internship;
 		}
-		return redirect (route ('internship.show'), compact('internship'));
+		return redirect (route ('internship.show', $internship));
 	}
 
 	public

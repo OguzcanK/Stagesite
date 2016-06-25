@@ -91,11 +91,12 @@ class InternshipController extends Controller
 
 		foreach ($internshipUsers as $internshipUser)
 		{
-				$usertmp = User::where (['id' => $internshipUser->user_id, 'role_id' => 3])->get ();
+				$usertmp = User::where ('id', $internshipUser->user_id)->get ();
 				if ($usertmp[0]->role_id == 3)
 				{
 					$users[] = $usertmp[0];
 				}
+
 		}
 		if (isset($users))
 		{

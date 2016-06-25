@@ -12,7 +12,11 @@ class School extends Model
 			'name',
 		];
 
-
+	public
+	function contacts ()
+	{
+		return $this->hasMany('App\Contact');
+	}
 
 	public
 	function locations ()

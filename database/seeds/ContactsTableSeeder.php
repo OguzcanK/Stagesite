@@ -16,18 +16,43 @@ class ContactsTableSeeder extends Seeder
             [
                 'surename' => 'pieters',
                 'firstname' => 'Tapas',
-                'email' => 'tapas@pieters.qs',
+                'email' => 'admin@admin.nl',
                 'phonenumber' => '0622233311',
-                'company_id' => 1,
             ]);
 
         Contact::create(
             [
                 'surename' => 'kappa',
                 'firstname' => 'Terro',
-                'email' => 'terro@kappa.kp',
+                'email' => 'student@kappa.kp',
                 'phonenumber' => '0622233311',
-                'company_id' => 2,
+            ]);
+
+        Contact::create(
+            [
+                'surename' => 'kappa',
+                'firstname' => 'Terro',
+                'email' => 'student@kappa.kp',
+                'phonenumber' => '0622233311',
+                'school_id' => 1,
+            ]);
+
+        Contact::create(
+            [
+                'surename' => 'Karakoc',
+                'firstname' => 'Oguzcan',
+                'email' => 'teacher@kappa.kp',
+                'phonenumber' => '0622233311',
+                'school_id' => 1,
+            ]);
+
+        Contact::create(
+            [
+                'surename' => 'Ryan',
+                'firstname' => 'Hogenboom',
+                'email' => 'practical@practical.nl',
+                'phonenumber' => '0622233311',
+                'company_id' => 1,
             ]);
 
     }
