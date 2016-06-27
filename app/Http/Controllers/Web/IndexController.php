@@ -25,7 +25,7 @@ class IndexController extends Controller
         if(isset($input['zoekt']) && isset($input['done'])){
             $company = Company::whereHas('contacts', function($query){
                 $query->wherehas('internships', function($q){
-                    $q->where('status_id', 5 OR 'status_id', 7);
+                    $q->where('status_id', 5 OR 'status_id',  7);
                 });
             })->get();
             return view('welcome', compact('company'));

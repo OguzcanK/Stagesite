@@ -20,10 +20,17 @@ class ReviewController extends Controller
                 'internship_id' => $input['internship_id']]
         );
 
+        if(isset($input['status'])){
+            $status_id = 2;
+        }
+        else{
+            $status_id = 1;
+        }
+
         Review::insert([
             'review' => $input['review'],
             'mark' => $input['mark'],
-            'status_id' => 1,
+            'status_id' => $status_id,
             'internship_user_id' => $iusers
         ]);
 

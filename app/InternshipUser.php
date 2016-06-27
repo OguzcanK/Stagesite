@@ -30,6 +30,6 @@ class InternshipUser extends Model
 	public
 	function reviews ()
 	{
-		return $this->hasOne ('App\Review');
+		return $this->hasMany ('App\Review');
 	}
 }

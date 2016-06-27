@@ -18,6 +18,10 @@
                                 {!! Form::label('review', 'review:*') !!}
                                 {!! Form::textarea('review', NULL, ['class' => 'form-control', 'required']) !!}
                             </div>
+                            <div class="form-group ">
+                                {!! Form::label('status', 'private:') !!}
+                                {!! Form::checkbox('status', NULL, ['class' => 'form-control']) !!}
+                            </div>
 
                             {!! Form::hidden('id',$review->id, NULL, ['class' => 'form-control', 'required']) !!}
 

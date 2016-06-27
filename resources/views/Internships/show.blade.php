@@ -77,6 +77,10 @@
                                 {!! Form::label('review', 'review:*') !!}
                                 {!! Form::textarea('review', NULL, ['class' => 'form-control', 'required']) !!}
                             </div>
+                            <div class="form-group ">
+                                {!! Form::label('status', 'private:') !!}
+                                {!! Form::checkbox('status', NULL, ['class' => 'form-control']) !!}
+                            </div>
 
                             {!! Form::hidden('internship_id',$internship->id, NULL, ['class' => 'form-control', 'required']) !!}
 
@@ -91,11 +95,10 @@
                             @foreach ($reviews as $array)
                                 @foreach ($array as $review)
                                     <div class="well">
-
-                            {{ $review->mark }}<br>
+                                        {{ $review->mark }}<br>
                                         {{ $review->review }}<br>
-                            <a href="{{ route('review.edit', $review->id) }}" class="btn btn-info">Verander</a>
-                            <a href="{{ route('review.destroy', $review->id) }}" data-token="{{ csrf_token() }}" class="delete btn btn-danger">verwijderen</a>
+                                            <a href="{{ route('review.edit', $review->id) }}" class="btn btn-info">Verander</a>
+                                            <a href="{{ route('review.destroy', $review->id) }}" data-token="{{ csrf_token() }}" class="delete btn btn-danger">verwijderen</a>
                                         </a>
                             </div>
                                 @endforeach
