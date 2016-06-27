@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Company;
+use App\Contact;
 use App\Education_offer;
 use App\Internship;
 use App\Status;
@@ -20,7 +21,7 @@ class InternshipController extends Controller
         $input['contact_id'] = Auth::user()->contact_id;
         $status_id = Status::findorfail($input['status_id']);
 
-        $contact_id = Company::findorfail($input['contact_id']);
+        $contact_id = Contact::findorfail($input['contact_id']);
 
         $edu_id = Education_offer::findorfail($input['education_offer_id']);
         Internship::insert(

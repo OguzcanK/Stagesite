@@ -39,7 +39,7 @@ class StudentController extends Controller
 											'internship_id' => $input['internship_id'],
 										]);
 				$internship = Internship::findorfail($input['internship_id']);
-				$internship->update(['status_id' => 8]);
+				$internship->update(['status_id' => 6]);
 			}
 			$internship = $input['internship_id'];
 			$internship = Internship::findorfail($internship);
@@ -51,7 +51,7 @@ class StudentController extends Controller
 	function update ($internship)
 	{
 		$internship = Internship::findorfail($internship);
-		$internship->update(['status_id' => 10]);
+		$internship->update(['status_id' => 7]);
 
 		return redirect (route ('internship.show', $internship));
 	}

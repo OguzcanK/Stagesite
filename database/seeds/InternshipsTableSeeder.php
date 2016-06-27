@@ -16,7 +16,7 @@ class InternshipsTableSeeder extends Seeder
             [
                 'begin' => 2012-12-12,
                 'end' => 2013-06-06,
-                'status_id' => 1,
+                'status_id' => 5,
                 'education_offer_id' => 1,
                 'contact_id' => 5,
             ]);
@@ -25,7 +25,7 @@ class InternshipsTableSeeder extends Seeder
             [
                 'begin' => 2013-12-12,
                 'end' => 2014-06-06,
-                'status_id' => 2,
+                'status_id' => 5,
                 'education_offer_id' => 1,
                 'contact_id' => 5,
             ]);

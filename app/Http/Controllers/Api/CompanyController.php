@@ -53,8 +53,8 @@ class CompanyController extends Controller
     public function destroy($company)
     {
 
-        if($company->delete()) {
-            return response(1, 200);
+        if(Company::destroy($company)) {
+            return redirect (route ('company.index'));
         }
         return response(0, 200);
     }
