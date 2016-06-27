@@ -16,9 +16,12 @@ class ProfileController extends Controller
     {
 
         $profile = Contact::findOrFail(Auth::user()->contact_id);
-        $company = Company::findOrfail($profile->company_id);
+        if(Auth::user()->getRole() == 'practical trainer') {
+            $company = Company::findOrfail($profile->company_id);
 
-        return view('profile.index', compact('profile', 'company'));
+            return view('profile.index', compact('profile', 'company'));
+        }
+        return view('profile.index', compact('profile'));
     }
     
 

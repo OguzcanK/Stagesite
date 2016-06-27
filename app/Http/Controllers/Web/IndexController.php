@@ -25,7 +25,7 @@ class IndexController extends Controller
         if(isset($input['zoekt']) && isset($input['done'])){
             $company = Company::whereHas('contacts', function($query){
                 $query->wherehas('internships', function($q){
-                    $q->where('status_id', 3 OR 'status_id', 1);
+                    $q->where('status_id', 5 OR 'status_id', 7);
                 });
             })->get();
             return view('welcome', compact('company'));
@@ -33,7 +33,7 @@ class IndexController extends Controller
         elseif(isset($input['zoekt'])){
             $company = Company::whereHas('contacts', function($query){
                 $query->wherehas('internships', function($q){
-                    $q->where('status_id', 1);
+                    $q->where('status_id', 5);
                 });
             })->get();
             return view('welcome', compact('company'));
@@ -41,7 +41,7 @@ class IndexController extends Controller
         elseif(isset($input['done'])){
             $company = Company::whereHas('contacts', function($query){
                 $query->wherehas('internships', function($q){
-                    $q->where('status_id', 3);
+                    $q->where('status_id', 7);
                 });
             })->get();
 
