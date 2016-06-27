@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Company;
+use App\Education_offer;
 use App\Internship;
 use App\Status;
 use Illuminate\Http\Request;
@@ -17,21 +18,23 @@ class InternshipController extends Controller
 
         $input = $request->all();
         $input['contact_id'] = Auth::user()->contact_id;
-        dd($input);
         $status_id = Status::findorfail($input['status_id']);
 
         $contact_id = Company::findorfail($input['contact_id']);
+
+        $edu_id = Education_offer::findorfail($input['education_offer_id']);
         Internship::insert(
             [
                 'begin' => $input['begin'],
                 'end' => $input['end'],
                 'contact_id' => $contact_id->id,
-                'status_id' => $status_id->id
+                'status_id' => $status_id->id,
+                'education_offer_id' => $edu_id->id
             ]);
 
         $company = Company::all();
 
-        return redirect (route ('welcome'), compact('company'));
+        return view('welcome', compact('company'));
 
 //        return view('master', compact('company'));
     }

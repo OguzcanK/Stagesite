@@ -30,12 +30,38 @@
                                                         @endforeach
                                                     @else
                                                         No students
+
+
                                                     @endif
                                                 </blockquote>
-                                                {!! Form::open(['route' => 'student.store']) !!}
-                                                    {!! Form::hidden('internship_id',$internship->id, NULL, ['class' => 'form-control', 'required']) !!}
-                                                    {!! Form::submit('Stage lopen', ['class' => 'btn btn-primary form-control ']) !!}
-                                                {!! Form::close() !!}
+                                                @if(Auth::user()->getRole() == 'student' OR Auth::user()->getRole() == 'admin')
+                                                    @if($internshipcontacts != NULL)
+                                                    @foreach($internshipcontacts as $internshipcontact)
+                                                    @if(Auth::user()->id == $internshipcontact->id)
+                                                        @if($internship->status->name == 'in progress')
+                                                                    {!! Form::open(['route' => ['student.update', $internship->id], 'method' => 'put']) !!}
+                                                                    {!! Form::submit('Stage beeindigen', ['class' => 'btn btn-primary form-control ']) !!}
+                                                                    {!! Form::close() !!}
+                                                            @elseif($internship->status->name == 'done')
+
+                                                                @else
+                                                                    {!! Form::open(['route' => 'student.store']) !!}
+                                                                    {!! Form::hidden('internship_id',$internship->id, NULL, ['class' => 'form-control', 'required']) !!}
+                                                                    {!! Form::submit('Stage lopen', ['class' => 'btn btn-primary form-control ']) !!}
+                                                                    {!! Form::close() !!}
+
+                                                            @endif
+
+                                                        @endif
+                                                        @endforeach
+                                                    @else
+                                                        {!! Form::open(['route' => 'student.store']) !!}
+                                                        {!! Form::hidden('internship_id',$internship->id, NULL, ['class' => 'form-control', 'required']) !!}
+                                                        {!! Form::submit('Stage lopen', ['class' => 'btn btn-primary form-control ']) !!}
+                                                        {!! Form::close() !!}
+                                                    @endif
+
+                                                @endif
                                             </div>
 
                     <div class="panel-body">

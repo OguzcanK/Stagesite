@@ -17,9 +17,6 @@
                                     {{$statusreview}}
                                     <div style="float:right;">
                                         <a href="{{ route('status.edit', $statusid) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        {!! Form::open(['route' => ['status.destroy', $statusid], 'method' => 'delete', 'class'=>'delete inline']) !!}
-                                        {!! Form::submit("trash", ['class' => 'btn btn-danger delete ']) !!}
-                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                         @endforeach
@@ -31,9 +28,7 @@
                                     {{$statusreview}}
                                     <div style="float:right;">
                                         <a href="{{ route('status.edit', $statusid) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        {!! Form::open(['route' => ['status.destroy', $statusid], 'method' => 'delete', 'class'=>'delete inline']) !!}
-                                        {!! Form::submit("trash", ['class' => 'btn btn-danger delete ']) !!}
-                                        {!! Form::close() !!}
+
                                     </div>
                                 </div>
                             @endforeach
@@ -45,9 +40,7 @@
                                     {{$statusreview}}
                                     <div style="float:right;">
                                         <a href="{{ route('status.edit', $statusid) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        {!! Form::open(['route' => ['status.destroy', $statusid], 'method' => 'delete', 'class'=>'delete inline']) !!}
-                                        {!! Form::submit("trash", ['class' => 'btn btn-danger delete ']) !!}
-                                        {!! Form::close() !!}
+
                                     </div>
                                 </div>
                             @endforeach

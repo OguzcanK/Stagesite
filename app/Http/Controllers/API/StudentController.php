@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Internship;
 use App\InternshipUser;
 use Illuminate\Http\Request;
 
@@ -37,16 +38,21 @@ class StudentController extends Controller
 											'user_id'       => Auth::user ()->id,
 											'internship_id' => $input['internship_id'],
 										]);
+				$internship = Internship::findorfail($input['internship_id']);
+				$internship->update(['status_id' => 8]);
 			}
 			$internship = $input['internship_id'];
-			$internship = (int)$internship;
+			$internship = Internship::findorfail($internship);
 		}
 		return redirect (route ('internship.show', $internship));
 	}
 
 	public
-	function update (Request $request)
+	function update ($internship)
 	{
+		$internship = Internship::findorfail($internship);
+		$internship->update(['status_id' => 10]);
 
+		return redirect (route ('internship.show', $internship));
 	}
 }

@@ -54,10 +54,14 @@
                                                 {{ $internship->status->name }}
                                             </p>
                                                 <a href="{{ route('internship.show', $internship->id) }}" class="btn btn-primary">Read more</a>
+                                                @if(isset(Auth::user()->id))
+                                                @if(Auth::user()->getRole() == 'practical trainer' OR Auth::user()->getRole() == 'admin')
                                                 <a href="{{ route('internship.edit', $internship->id) }}" class="btn btn-info">Edit</a>
                                                 {!! Form::open(['route' => ['internship.destroy', $internship->id], 'method' => 'delete', 'class'=>'delete inline']) !!}
                                                 {!! Form::submit("trash", ['class' => 'btn btn-danger delete ']) !!}
                                                 {!! Form::close() !!}
+                                                    @endif
+                                                    @endif
                                             </div>
                                             @endforeach
                                     @endforeach

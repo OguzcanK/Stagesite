@@ -92,24 +92,25 @@ class InternshipController extends Controller
 		foreach ($internshipUsers as $internshipUser)
 		{
 				$usertmp = User::where ('id', $internshipUser->user_id)->get ();
-				if ($usertmp[0]->role_id == 3)
+				if ($usertmp[0]->role_id == 1 OR $usertmp[0]->role_id == 3)
 				{
 					$users[] = $usertmp[0];
 				}
 
 		}
+
 		if (isset($users))
 		{
 			foreach ($users as $user)
 			{
 				$tmp                  = DB::table ('contacts')->where ('id', $user->contact_id)->get ();
 				$internshipcontacts[] = $tmp[0];
+
 			}
 		}
 		else{
 			$internshipcontacts = NULL;
 		}
-
 		return view ('Internships.show', compact ('internship', 'reviews', 'internshipcontacts'));
 	}
 

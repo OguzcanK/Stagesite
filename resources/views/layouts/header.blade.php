@@ -38,7 +38,7 @@
                             <li class="dropdown">
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="">Status <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/status/show') }}">Show</a></li>
+                                    <li><a href="{{ url('/status') }}">Show</a></li>
                                     <li><a href="{{ url('/status/create') }}">Create</a></li>
                                 </ul>
                             </li>

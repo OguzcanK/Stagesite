@@ -94,7 +94,7 @@ class LocationController extends Controller
 		Address::destroy ($address);
 		Location::destroy ($location);
 
-			return view ( route('school.show', $school));
+		return redirect()->back();
 
 	}
 }
