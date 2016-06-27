@@ -22,7 +22,7 @@ class CategorieTableSeeder extends Seeder
             ]);
         Categorie::create(
             [
-                'name' => 'stage',
+                'name' => 'internship',
             ]);
     }
 }

@@ -13,25 +13,39 @@ class StatusesTableSeeder extends Seeder
     public function run()
     {
         Status::create(
-
             [
-                'name' => 'starting',
+                'name' => 'Public',
                 'categorie_id' => '1'
             ]);
         Status::create(
             [
-                'name' => 'in progress',
+                'name' => 'Private',
+                'categorie_id' => '1'
+            ]);
+        Status::create(
+            [
+                'name' => 'pending',
                 'categorie_id' => '2'
             ]);
         Status::create(
             [
-                'name' => 'done',
+                'name' => 'acknowledge',
                 'categorie_id' => '2'
             ]);
 
         Status::create(
             [
-                'name' => 'okee',
+                'name' => 'searching',
+                'categorie_id' => '3'
+            ]);
+        Status::create(
+            [
+                'name' => 'in_progress',
+                'categorie_id' => '3'
+            ]);
+        Status::create(
+            [
+                'name' => 'done',
                 'categorie_id' => '3'
             ]);
     }

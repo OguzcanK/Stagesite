@@ -136,12 +136,25 @@
                             <script type="application/javascript">
                                 window.onload = function () {
                                     $('#practical_trainer').hide();
+                                    $('#student_teacher').hide()
                                     $('#Roles').change(function () {
                                         var selected_option = $('#Roles option:selected');
                                         if (selected_option.val() == 5) {
                                             $('#practical_trainer').show();
                                         } else {
                                             $('#practical_trainer').hide();
+                                        }
+                                        if (selected_option.val() == 4) {
+                                            $('#teacher').show();
+                                        }
+                                        else {
+                                            $('#teacher').hide();
+                                        }
+                                        if (selected_option.val() == 4 || selected_option.val() == 3) {
+                                            $('#student_teacher').show();
+
+                                        } else {
+                                            $('#student_teacher').hide()
                                         }
                                     });
                                 };
@@ -201,6 +214,51 @@
                                         @endif
                                     </div>
                                 </div>
+                            </div>
+
+                             <div id="student_teacher">
+                                <hr>
+                                <div class="form-group{{ $errors->has('comapny') ? ' has-error' : '' }}">
+                                    <label class="col-md-4 control-label">School</label>
+                                    <?php
+                                    $schools = \App\School::all ();
+                                    ?>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="school">
+                                            @foreach($schools as $school)
+                                                <option value="{{$school->id}}">{{$school->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="col-md-6">
+                                            @if ($errors->has('school'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('school') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="teacher">
+                                    <div class="form-group{{ $errors->has('comapnyname') ? ' has-error' : '' }}">
+                                    <span class="col-md-12" style="text-align: center"><hr>If you can't find your school in the list</span>
+                                </div>
+
+                                    <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
+
+                                    <label class="col-md-4 control-label">school name</label>
+
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="schoolname" value="{{ old('schoolname') }}">
+
+                                        @if ($errors->has('schoolname'))
+                                            <span class="help-block">
+                                                    <strong>{{ $errors->first('schoolname') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">

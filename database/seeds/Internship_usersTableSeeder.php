@@ -14,7 +14,7 @@ class Internship_usersTableSeeder extends Seeder
     {
         InternshipUser::create(
             [
-                'user_id' => 1,
+                'user_id' => 3,
                 'internship_id' => 1,
             ]);
 

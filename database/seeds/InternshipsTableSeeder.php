@@ -18,7 +18,7 @@ class InternshipsTableSeeder extends Seeder
                 'end' => 2013-06-06,
                 'status_id' => 1,
                 'education_offer_id' => 1,
-                'contact_id' => 1,
+                'contact_id' => 5,
             ]);
 
         Internship::create(
@@ -27,7 +27,7 @@ class InternshipsTableSeeder extends Seeder
                 'end' => 2014-06-06,
                 'status_id' => 2,
                 'education_offer_id' => 1,
-                'contact_id' => 2,
+                'contact_id' => 5,
             ]);
 
     }

@@ -14,7 +14,11 @@ class SchoolsTableSeeder extends Seeder
     {
         School::create(
             [
-                'name' => 'testschool',
+                'name' => 'Zadkine',
+            ]);
+        School::create(
+            [
+                'name' => 'Albeda',
             ]);
     }
 }

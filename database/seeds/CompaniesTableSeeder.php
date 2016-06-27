@@ -14,13 +14,13 @@ class CompaniesTableSeeder extends Seeder
     {
         Company::create(
             [
-                'name' => 'testcompany',
+                'name' => 'MaxPerfection',
                 'phonenumber' => '06-66655544'
             ]);
 
         Company::create(
             [
-                'name' => 'testcompany2',
+                'name' => 'Dingladoo',
                 'phonenumber' => '06-31255544'
             ]);
 

@@ -17,5 +17,10 @@ class LocationsTableSeeder extends Seeder
                 'school_id' => '1',
             ]);
 
+        Location::create(
+            [
+                'school_id' => '2',
+            ]);
+
     }
 }
