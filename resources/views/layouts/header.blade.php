@@ -66,14 +66,14 @@
                         </ul>
                     @elseif(Auth::user()->getRole() == 'student')
                         <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="{{ url('/') }}">Home</a></li>
                             <li class="dropdown">
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="">Company <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ url('/company') }}">Show</a></li>
                                 </ul>
                             </li>
-                            </ul>
+                        </ul>
                     @elseif(Auth::user()->getRole() == 'teacher')
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/') }}">Home</a></li>
@@ -105,26 +105,26 @@
                                     <li><a href="{{ url('/crebo/create') }}">Create</a></li>
                                 </ul>
                             </li>
-                            </ul>
+                        </ul>
 
                     @elseif(Auth::user()->getRole() == 'practical trainer')
 
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/') }}">Home</a></li>
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="">Tools <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ url('/tool') }}">Show</a></li>
-                                <li><a href="{{ url('/tool/create') }}">Create</a></li>
-                            </ul>
-                        </li>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ url('/tool') }}">Show</a></li>
+                                    <li><a href="{{ url('/tool/create') }}">Create</a></li>
+                                </ul>
+                            </li>
                             <li class="dropdown">
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="">Internship <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ url('/internship/create') }}">Create</a></li>
                                 </ul>
                             </li>
-                            </ul>
+                        </ul>
                 @endif
 
                 @endif
