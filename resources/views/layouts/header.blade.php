@@ -22,6 +22,7 @@
                     @if(Auth::user()->getRole() == 'admin')
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="{{ url('/verification') }}">Verification</a></li>
                             <li class="dropdown">
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="">School <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
