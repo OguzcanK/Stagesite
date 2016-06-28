@@ -5,14 +5,6 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-12">
-            <h2>
-                <a href="{{ route('company.index') }}">Go back</a>
-            </h2>
-        </div>
-    </div>
-
-    <div class="row">
         <h3>
             {{ $company->name }}
         </h3>
@@ -36,23 +28,42 @@
                         {{ $contact->firstname }}
                     </p>
                 </a>
+                <?php
+                    if(Auth::check())
+                        {
+                            $check;
+                            if ($contact->id == Auth::user()->contact_id)
+                            {
+                                $check = TRUE;
+                            }
+                        }
+                ?>
             @endforeach
         </blockquote>
     </div>
-
+    @if($stages != NULL)
     <div class="row">
-        <h5><b>Stages</b></h5>
+        <h5><b>Internships</b></h5>
         <blockquote>
             @foreach($stages as $array)
                 @foreach($array as $stage)
                     <a href="{{ route('internship.show', $stage->id) }}">
                         <p>
-                            <h4>{{--{{ $stage->title }}--}}Title van een stage - {{ $stage->status }}</h4>
+                            <h4>{{ $stage->name }} | Status: {{ $stage->status }}</h4>
                         </p>
                     </a>
                 @endforeach
             @endforeach
         </blockquote>
     </div>
+    @endif
+    @if(Auth::check())
+    @if(isset($check) OR Auth::user()->getRole() == 'admin')
+        <div class="row">
+            <a href="{{ route('company.edit', $company->id) }}" class="btn btn-default"> <span
+                        class="glyphicon glyphicon-pencil"></span></a>
+        </div>
+    @endif
+    @endif
 
 @stop

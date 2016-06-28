@@ -16,19 +16,19 @@ class ToolsTableSeeder extends Seeder
             [
                 'name' => 'php',
                 'description' => 'PHP is een reg belangerijke tool om te kunnen coderen voor op het web',
-                'status_id' => 2,
+                'status_id' => 4,
             ]);
         Tool::create(
             [
                 'name' => 'Javascript',
                 'description' => 'Javascript is een reg belangerijke tool om te kunnen coderen voor op het web',
-                'status_id' => 2,
+                'status_id' => 4,
             ]);
         Tool::create(
             [
                 'name' => 'Laravel',
                 'description' => 'Laravel is een MVC frameswork',
-                'status_id' => 1,
+                'status_id' => 3,
             ]);
     }
 }

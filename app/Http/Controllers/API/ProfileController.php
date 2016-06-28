@@ -13,15 +13,10 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $input = $request->all();
-
-        $validate = $this->validator($input);
-        if ($validate->fails()) {
-            $this->throwValidationException($request, $validate);
-        } else {
-
             $profile = Contact::findOrFail(Auth::user()->contact_id);
-            $profile->update($input);
-        }
-        return redirect(route('profile.show'));
+
+        $profile->update($input);
+
+        return redirect(route('profile.index'));
     }
 }

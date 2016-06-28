@@ -38,7 +38,8 @@ class User extends Authenticatable
 		{
 			$role = Role::findOrFail (Auth::user ()->role_id);
 
-			return $role->role;
+				return $role->role;
+			
 		}
 	}
 	public

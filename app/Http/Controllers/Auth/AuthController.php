@@ -71,36 +71,36 @@ class AuthController extends Controller
 	protected
 	function create (array $data)
 	{
-
-		if (isset($data['insertion']) && !empty($data['insertion']))
+		if ($data['insertion'] != "")
 		{
-			if (isset($data['comapnyname'], $data['comapanynumber']) && !empty($data['comapnyname']) && !empty($data['comapanynumber']) && !isset($data['schoolname']) && empty($data['schoolname']))
+			if ($data['companyname'] != "" && $data['companynumber'] != "" && $data['schoolname'] == "")
 			{
+
 				if ($data['role_id'] == 5)
 				{
 					$Company = Company::create ([
-													'name'        => $data['comapnyname'],
-													'phonenumber' => $data['comapanynumber'],
+													'name'        => $data['companyname'],
+													'phonenumber' => $data['companynumber'],
 												]);
 					$contact = Contact::create ([
 													'firstname'   => $data['name'],
 													'insertion'   => $data['insertion'],
-													'lastname'    => $data['Surename'],
+													'surename'    => $data['Surename'],
 													'email'       => $data['email'],
 													'phonenumber' => $data['Phonenumber'],
 													'conmpany_id' => $Company->id,
 												]);
 				}
 			}
-			elseif (!isset($data['comapnyname'], $data['comapanynumber']) && empty($data['comapnyname']) && empty($data['comapanynumber']) && isset($data['company']) && !empty($data['company']) && isset($data['school']) && !empty($data['school']) && !isset($data['schoolname']) && empty($data['schoolname']))
+			elseif ($data['companyname'] == "" && $data['companynumber'] == "" && $data['schoolname'] == "")
 			{
+
 				if ($data['role_id'] == 5)
 				{
-					dd ($data['company']);
 					$contact = Contact::create ([
 													'firstname'   => $data['name'],
 													'insertion'   => $data['insertion'],
-													'lastname'    => $data['Surename'],
+													'surename'    => $data['Surename'],
 													'email'       => $data['email'],
 													'phonenumber' => $data['Phonenumber'],
 													'conmpany_id' => $data['company'],
@@ -111,14 +111,14 @@ class AuthController extends Controller
 					$contact = Contact::create ([
 													'firstname'   => $data['name'],
 													'insertion'   => $data['insertion'],
-													'lastname'    => $data['Surename'],
+													'surename'    => $data['Surename'],
 													'email'       => $data['email'],
 													'phonenumber' => $data['Phonenumber'],
 													'school_id'   => $data['school'],
 												]);
 				}
 			}
-			elseif (!isset($data['comapnyname'], $data['comapanynumber']) && empty($data['comapnyname']) && empty($data['comapanynumber']) && isset($data['schoolname']) && !empty($data['schoolname']))
+			elseif ($data['companyname'] == "" && $data['companynumber'] == "" && $data['schoolname'] != "")
 			{
 				$school = School::create ([
 												'name'        => $data['schoolname'],
@@ -127,10 +127,10 @@ class AuthController extends Controller
 				$contact = Contact::create ([
 												'firstname'   => $data['name'],
 												'insertion'   => $data['insertion'],
-												'lastname'    => $data['Surename'],
+												'surename'    => $data['Surename'],
 												'email'       => $data['email'],
 												'phonenumber' => $data['Phonenumber'],
-												'conmpany_id' => $school->id,
+												'school_id'   => $school->id,
 											]);
 			}
 			else
@@ -138,7 +138,7 @@ class AuthController extends Controller
 				$contact = Contact::create ([
 												'firstname'   => $data['name'],
 												'insertion'   => $data['insertion'],
-												'lastname'    => $data['Surename'],
+												'surename'    => $data['Surename'],
 												'email'       => $data['email'],
 												'phonenumber' => $data['Phonenumber'],
 											]);
@@ -146,70 +146,73 @@ class AuthController extends Controller
 		}
 		else
 		{
-			if (isset($data['comapnyname'], $data['comapanynumber']) && !empty($data['comapnyname']) && !isset($data['company']) && empty($data['company']) && !empty($data['comapanynumber']) && !isset($data['school']) && empty($data['school']) && !isset($data['schoolname']) && empty($data['schoolname']))
+
+			if ($data['companyname'] != "" && $data['companynumber'] != "" && $data['schoolname'] == "" )
 			{
 				if ($data['role_id'] == 5)
 				{
 					$Company = Company::create ([
-													'name'        => $data['comapnyname'],
-													'phonenumber' => $data['comapanynumber'],
+													'name'        => $data['companyname'],
+													'phonenumber' => $data['companynumber'],
 												]);
 					$contact = Contact::create ([
 													'firstname'   => $data['name'],
-													'lastname'    => $data['Surename'],
+													'surename'    => $data['Surename'],
 													'email'       => $data['email'],
 													'phonenumber' => $data['Phonenumber'],
 													'conmpany_id' => $Company->id,
 												]);
 				}
 			}
-			elseif (!isset($data['comapnyname'], $data['comapanynumber']) && empty($data['comapnyname']) && empty($data['comapanynumber']) && isset($data['company']) && !empty($data['company']) && !isset($data['school']) && empty($data['school']) && !isset($data['schoolname']) && empty($data['schoolname']))
+			elseif ($data['companyname'] == "" && $data['companynumber'] == "" && $data['schoolname'] != "")
 			{
-				if ($data['role_id'] == 5)
+				if ($data['role_id'] == 4)
 				{
-					dd ($data['company']);
+					$school = School::create ([
+												  'name'        => $data['schoolname'],
+											  ]);
+
 					$contact = Contact::create ([
 													'firstname'   => $data['name'],
-													'lastname'    => $data['Surename'],
+													'surename'    => $data['Surename'],
 													'email'       => $data['email'],
 													'phonenumber' => $data['Phonenumber'],
-													'conmpany_id' => $data['company'],
+													'school_id'   => $school->id
 												]);
 				}
 			}
-			elseif (!isset($data['comapnyname'], $data['comapanynumber']) && empty($data['comapnyname']) && empty($data['comapanynumber']) && !isset($data['company']) && empty($data['company']) && isset($data['school']) && !empty($data['school']) && !isset($data['schoolname']) && empty($data['schoolname']))
+			elseif ($data['companyname'] == "" && $data['companynumber'] == "" && $data['schoolname'] == "")
 			{
+
 				if ($data['role_id'] == 3 || $data['role_id'] == 4)
 				{
+
 					$contact = Contact::create ([
 													'firstname'   => $data['name'],
-													'lastname'    => $data['Surename'],
+													'surename'    => $data['Surename'],
 													'email'       => $data['email'],
 													'phonenumber' => $data['Phonenumber'],
 													'school_id'   => $data['school'],
 												]);
-				}
-			}
-			elseif (!isset($data['comapnyname'], $data['comapanynumber']) && empty($data['comapnyname']) && empty($data['comapanynumber']) && !isset($data['company']) && empty($data['company']) && !isset($data['school']) && empty($data['school']) && isset($data['schoolname']) && !empty($data['schoolname']))
-			{
-				$school = School::create ([
-											  'name'        => $data['schoolname'],
-										  ]);
 
-				$contact = Contact::create ([
-												'firstname'   => $data['name'],
-												'lastname'    => $data['Surename'],
-												'email'       => $data['email'],
-												'phonenumber' => $data['Phonenumber'],
-												'conmpany_id' => $school->id,
-											]);
+				}
+				elseif ($data['role_id'] == 5)
+				{
+					$contact = Contact::create ([
+													'firstname'   => $data['name'],
+													'surename'    => $data['Surename'],
+													'email'       => $data['email'],
+													'phonenumber' => $data['Phonenumber'],
+													'company_id'  => $data['company'],
+												]);
+				}
 			}
 			else
 			{
 				$contact = Contact::create ([
 												'firstname'   => $data['name'],
 												'insertion'   => $data['insertion'],
-												'lastname'    => $data['Surename'],
+												'surename'    => $data['Surename'],
 												'email'       => $data['email'],
 												'phonenumber' => $data['Phonenumber'],
 											]);

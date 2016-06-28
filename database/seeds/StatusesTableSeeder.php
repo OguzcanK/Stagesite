@@ -40,7 +40,7 @@ class StatusesTableSeeder extends Seeder
             ]);
         Status::create(
             [
-                'name' => 'in_progress',
+                'name' => 'in progress',
                 'categorie_id' => '3'
             ]);
         Status::create(

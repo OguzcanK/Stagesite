@@ -18,6 +18,7 @@ class InternshipController extends Controller
     public function store(Request $request){
 
         $input = $request->all();
+
         $input['contact_id'] = Auth::user()->contact_id;
         $status_id = Status::findorfail($input['status_id']);
 
@@ -26,6 +27,7 @@ class InternshipController extends Controller
         $edu_id = Education_offer::findorfail($input['education_offer_id']);
         Internship::insert(
             [
+                'name' => $input['name'],
                 'begin' => $input['begin'],
                 'end' => $input['end'],
                 'contact_id' => $contact_id->id,
@@ -42,12 +44,12 @@ class InternshipController extends Controller
 
     public function update(Request $request, $internship){
         $input = $request->all();
+
         $input['contact_id'] = Auth::user()->contact_id;
         $internship = Internship::findorfail($internship);
         $status_id = Status::findorfail($input['status_id']);
 
-        $contact_id = Company::findorfail($input['contact_id']);
-
+        $contact_id = Contact::findorfail($input['contact_id']);
         $internship->update($input);
         return redirect (route ('index'));
     }
@@ -55,7 +57,6 @@ class InternshipController extends Controller
     public
     function destroy ($internship)
     {
-
         if (Internship::destroy ($internship))
         {
             return redirect (route ('index'));

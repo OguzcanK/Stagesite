@@ -67,6 +67,13 @@ class ContactController extends Controller
 
 		$companies = Company::all ();
 
+		$schools = School::all ();
+
+		foreach ($schools as $school)
+		{
+			$schoolsArray[$school->id] = $school->name;
+		}
+
 		foreach ($companies as $company)
 		{
 			$companyArray[$company->id] = $company->name;
@@ -74,6 +81,6 @@ class ContactController extends Controller
 
 		$contact = Contact::findOrFail ($contact);
 
-		return view ('contact.edit', compact ('contact', 'companyArray'));
+		return view ('contact.edit', compact ('contact', 'companyArray', 'schoolsArray'));
 	}
 }

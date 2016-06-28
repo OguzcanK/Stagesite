@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Contact;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class ContactController extends Controller
         return Validator::make($data, [
             'firstname' => 'required|max:50|min:2',
             'surename' => 'required|max:60|min:2',
-            'phonenumber' => 'max:10|min:2',
+            'phonenumber' => 'max:15|min:2',
         ]);
     }
 
@@ -42,10 +43,15 @@ class ContactController extends Controller
             $this->throwValidationException($request, $validate);
         } else {
 
+
             $contact = Contact::findOrFail($contact);
+            if (Auth::user()->getRole() != 'practical trainer')
+            {
+                $input['company_id'] = NULL;
+            }
             $contact->update($input);
         }
-        return redirect(route('contact.index'));
+        return redirect(route('contact.show', Auth::user()->contact_id));
     }
 
     public function destroy($contact)

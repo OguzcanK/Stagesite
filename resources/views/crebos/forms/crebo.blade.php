@@ -50,6 +50,14 @@
 
 <div class="form-group">
 
+<div class="form-group">
+    <select id="schools" class="form-control" name="school">
+        @foreach($school_all_info as $array)
+            <option id="School_id_{{$array['school']->id}}" value="{{$array['school']->name}}">{{$array['school']->name}}</option>
+        @endforeach
+    </select>
+</div>
+
 <select id="locations" class="form-control" name="location">
     @foreach($school_all_info as $array)
         @foreach($array['location'] as $location)
@@ -61,14 +69,8 @@
     </select>
 </div>
 
-<div class="form-group">
-    <select id="schools" class="form-control" name="school">
-        @foreach($school_all_info as $array)
-            <option id="School_id_{{$array['school']->id}}" value="{{$array['school']->name}}">{{$array['school']->name}}</option>
-        @endforeach
-    </select>
-</div>
+
 
 <div class="form-group">
-    {!! Form::submit('Verstuur', ['class' => 'btn btn-primary form-control']) !!}
+    {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
 </div>

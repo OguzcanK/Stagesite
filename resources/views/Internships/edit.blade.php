@@ -12,6 +12,12 @@
 
                         <fieldset class="col-md-5">
                             <legend>persoonlijke gegevens</legend>
+
+                            <div class="form-group">
+                                {!! Form::label('name', 'Title:') !!}
+                                {!! Form::text('name', NULL, ['class' => 'form-control', 'required']) !!}
+                            </div>
+
                             <div class="form-group ">
                                 {!! Form::label('begin', 'Begindatum:*') !!}
                                 {!! Form::Date('begin', null, ['class' => 'form-control', 'required']) !!}
@@ -31,7 +37,7 @@
                         </fieldset>
 
                         <div class="form-group col-md-12">
-                            {!! Form::submit('stage aanpassen!', ['class' => 'btn btn-primary form-control ']) !!}
+                            {!! Form::submit('Edit internship', ['class' => 'btn btn-primary form-control ']) !!}
                         </div>
                         {!! Form::close() !!}
                     </div>

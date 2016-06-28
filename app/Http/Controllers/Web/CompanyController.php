@@ -37,39 +37,46 @@ class CompanyController extends Controller
 			{
 			}
 		}
-		foreach ($stages as $array)
-		{
-			foreach ($array as $internship)
+		if (isset($stages)){
+			foreach ($stages as $array)
 			{
-				$statusarray   = DB::table ('statuses')->where ('id', $internship->status_id)->pluck ('name');
-				$internship->status = $statusarray[0];
-
-				$internshipUsers = DB::table ('internship_users')->where ('internship_id', $internship->id)->get ();
-
-				foreach ($internshipUsers as $internshipUser)
+				foreach ($array as $internship)
 				{
+					$statusarray   = DB::table ('statuses')->where ('id', $internship->status_id)->pluck ('name');
+					$internship->status = $statusarray[0];
 
-					$usertmp = User::where ('id', $internshipUser->user_id)->get ();
-					if ($usertmp[0]->role_id == 3)
+					$internshipUsers = DB::table ('internship_users')->where ('internship_id', $internship->id)->get ();
+
+					foreach ($internshipUsers as $internshipUser)
 					{
-						$users[] = $usertmp[0];
+
+						$usertmp = User::where ('id', $internshipUser->user_id)->get ();
+						if ($usertmp[0]->role_id == 3)
+						{
+							$users[] = $usertmp[0];
+						}
+
+					}
+					if (isset($users))
+					{
+						foreach ($users as $user)
+						{
+							$tmp                  = DB::table ('contacts')->where ('id', $user->contact_id)->get ();
+							$internshipcontacts[] = $tmp[0];
+						}
+					}
+					else{
+						$internshipcontacts = NULL;
 					}
 
 				}
-				if (isset($users))
-				{
-					foreach ($users as $user)
-					{
-						$tmp                  = DB::table ('contacts')->where ('id', $user->contact_id)->get ();
-						$internshipcontacts[] = $tmp[0];
-					}
-				}
-				else{
-					$internshipcontacts = NULL;
-				}
-
 			}
 		}
+		else {
+			$stages = NULL;
+			$internshipUsers = NULL;
+		}
+
 		
 
 		return view ('company.show', compact ('company', 'contacten', 'stages', 'internshipUsers'));

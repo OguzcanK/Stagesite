@@ -24,16 +24,16 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('Insertion') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('insertion') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Insertion</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="Insertion"
-                                           value="{{ old('Insertion') }}">
+                                    <input type="text" class="form-control" name="insertion"
+                                           value="{{ old('insertion') }}">
 
-                                    @if ($errors->has('Insertion'))
+                                    @if ($errors->has('insertion'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('Insertion') }}</strong>
+                                        <strong>{{ $errors->first('insertion') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -161,55 +161,55 @@
                             </script>
                             <div id="practical_trainer">
                                 <hr>
-                                <div class="form-group{{ $errors->has('comapny') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('company') ? ' has-error' : '' }}">
                                     <label class="col-md-4 control-label">Company</label>
                                     <?php
                                     $companies = \App\Company::all ();
                                     ?>
                                     <div class="col-md-6">
-                                        <select class="form-control" name="comapny">
+                                        <select class="form-control" name="company">
                                             @foreach($companies as $company)
                                                 <option value="{{$company->id}}">{{$company->name}}</option>
                                             @endforeach
                                         </select>
                                         <div class="col-md-6">
-                                            @if ($errors->has('comapny'))
+                                            @if ($errors->has('company'))
                                                 <span class="help-block">
-                                                <strong>{{ $errors->first('comapny') }}</strong>
+                                                <strong>{{ $errors->first('company') }}</strong>
                                             </span>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('comapnyname') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('companyname') ? ' has-error' : '' }}">
                                     <span class="col-md-12" style="text-align: center"><hr>If you can't find your company in the list</span>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('comapnyname') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('companyname') ? ' has-error' : '' }}">
 
-                                    <label class="col-md-4 control-label">comapny name</label>
+                                    <label class="col-md-4 control-label">company name</label>
 
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="comapnyname" value="{{ old('comapnyname') }}">
+                                        <input type="text" class="form-control" name="companyname" value="{{ old('companyname') }}">
 
                                         @if ($errors->has('name'))
                                             <span class="help-block">
-                                                    <strong>{{ $errors->first('comapnyname') }}</strong>
+                                                    <strong>{{ $errors->first('companyname') }}</strong>
                                         </span>
                                         @endif
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('comapanynumber') ? ' has-error' : '' }}">
-                                    <label class="col-md-4 control-label">comapany number</label>
+                                <div class="form-group{{ $errors->has('companynumber') ? ' has-error' : '' }}">
+                                    <label class="col-md-4 control-label">company number</label>
 
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="comapanynumber" value="{{ old('comapanynumber') }}">
+                                        <input type="text" class="form-control" name="companynumber" value="{{ old('companynumber') }}">
 
                                         @if ($errors->has('name'))
                                             <span class="help-block">
-                                                    <strong>{{ $errors->first('comapanynumber') }}</strong>
+                                                    <strong>{{ $errors->first('companynumber') }}</strong>
                                         </span>
                                         @endif
                                     </div>
@@ -218,7 +218,7 @@
 
                              <div id="student_teacher">
                                 <hr>
-                                <div class="form-group{{ $errors->has('comapny') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
                                     <label class="col-md-4 control-label">School</label>
                                     <?php
                                     $schools = \App\School::all ();
@@ -239,7 +239,7 @@
                                     </div>
                                 </div>
                                 <div id="teacher">
-                                    <div class="form-group{{ $errors->has('comapnyname') ? ' has-error' : '' }}">
+                                    <div class="form-group{{ $errors->has('schoolname') ? ' has-error' : '' }}">
                                     <span class="col-md-12" style="text-align: center"><hr>If you can't find your school in the list</span>
                                 </div>
 

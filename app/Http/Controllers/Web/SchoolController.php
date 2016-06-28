@@ -26,7 +26,6 @@ class SchoolController extends Controller
 	function show ($school)
 	{
 		$school = School::findOrFail ($school);
-
 		$locations = DB::table ('locations')->where ('school_id', $school->id)->get ();
 
 		foreach ($locations as $location)
@@ -38,7 +37,8 @@ class SchoolController extends Controller
 
 		foreach ($contacts as $contact)
 		{
-			$user = User::findorFail ($contact->id);
+
+			$user = User::where('contact_id', $contact->id)->first();
 
 			if ($user->role_id == 3)
 			{

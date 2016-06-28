@@ -43,17 +43,9 @@ class ToolController extends Controller
 	{
 		$input = $request->all ();
 
-		$validate = $this->validator ($input);
-		if ($validate->fails ())
-		{
-			$this->throwValidationException ($request, $validate);
-		}
-		else
-		{
-
 			$tool = Tool::findOrFail ($tool);
 			$tool->update ($input);
-		}
+		
 
 		return redirect (route ('tool.index'));
 	}

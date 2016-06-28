@@ -10,9 +10,12 @@
             <div class="row">
                 <div class="col-md-12"><p>
                         {{ $info->name }}
+                        @if(Auth::user()->getRole() == 'admin')
                         {!! Form::open(['route' => ['crebo.destroy', $info->id], 'method' => 'delete', 'style' => 'display:inline']) !!}
                         {!! Form::submit("trash", ['class' => 'btn btn-danger delete']) !!}
-                        {!! Form::close() !!}</p>
+                        {!! Form::close() !!}
+                        @endif
+                    </p>
                 </div>
             </div>
         @endforeach

@@ -19,12 +19,14 @@ class CreateContactsTable extends Migration
             $table->string('firstname', 60);
             $table->string('email');
             $table->string('phonenumber')->nullable();
+            $table->unsignedInteger('education_offer_id')->nullable();
             $table->unsignedInteger('company_id')->nullable();
             $table->unsignedInteger('school_id')->nullable();
 
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+
         });
     }
 

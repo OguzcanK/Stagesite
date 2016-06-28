@@ -7,8 +7,10 @@ use App\Contact;
 use App\Crebo;
 use App\Education_offer;
 use App\Internship;
+use App\Internshiptool;
 use App\InternshipUser;
 use App\Status;
+use App\Tool;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -32,8 +34,7 @@ class InternshipController extends Controller
 		$status = Status::all ();
 
 		$statusArray = [];
-
-
+		
 		foreach ($status as $state)
 		{
 			if ($state->categorie_id == 3)
@@ -45,6 +46,8 @@ class InternshipController extends Controller
 		{
 			$educationArray[$c->id] = $c->name;
 		}
+
+
 
 		return view ('Internships.create', compact ('educationArray', 'statusArray'));
 	}
@@ -59,7 +62,7 @@ class InternshipController extends Controller
 		$status = Status::all ();
 
 		$statusArray = [];
-
+		
 		foreach ($status as $state)
 		{
 			if ($state->categorie_id == 3)
@@ -76,9 +79,13 @@ class InternshipController extends Controller
 	}
 
 	public
-	function show ($internship)
+	function show ($info)
 	{
-		$internship = Internship::findorfail ($internship);
+		$contactz = explode(",", $info);
+		$contactz[0]; // piece1
+		$contactz[1]; // piece2
+		
+		$internship = Internship::findorfail ($contactz[0]);
 
 		$contacts = [];
 
@@ -111,20 +118,18 @@ class InternshipController extends Controller
 		else{
 			$internshipcontacts = NULL;
 		}
-		return view ('Internships.show', compact ('internship', 'reviews', 'internshipcontacts'));
-	}
+		$tools = Tool::all ();
 
-	public
-	function add ($stage)
-	{
-		if (Auth::user ()->getRole () == 'student')
+		$toolsArray = [];
+
+		foreach ($tools as $tool)
 		{
-
-			$contact = DB::table ('contacts')->where ('id', Auth::user ()->contact_id)->get ();
-			dd ($contact);
-			DB::table ('contacts')
-			  ->where ('id', 1)
-			  ->update (['votes' => 1]);
+			if ($tool->status_id == 4)
+			{
+				$toolsArray[$tool->id] = $tool->name;
+			}
 		}
+		return view ('Internships.show', compact ('internship', 'reviews', 'internshipcontacts', 'toolsArray', 'contactz'));
 	}
+
 }

@@ -19,10 +19,10 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('state', 'state:') !!}
+    {!! Form::label('state', 'city:') !!}
     {!! Form::text('state', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::submit('Verstuur', ['class' => 'btn btn-primary form-control']) !!}
+    {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
 </div>

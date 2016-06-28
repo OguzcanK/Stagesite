@@ -12,7 +12,9 @@ class Contact extends Model
         'firstname',
         'email',
         'phonenumber',
-        'company_id'
+        'company_id',
+        'school_id',
+        'education_offer_id'
     ];
 
     public

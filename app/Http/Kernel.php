@@ -33,7 +33,24 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
         ],
         'admin' => [
-            AdminMiddleware::class
+/*            AdminMiddleware::class,*/
+            \App\Http\Middleware\Admin::class,
+        ],
+        'teacher' => [
+            /*            AdminMiddleware::class,*/
+            \App\Http\Middleware\Teacher::class,
+        ],
+        'default_user' => [
+            /*            AdminMiddleware::class,*/
+            \App\Http\Middleware\Teacher::class,
+        ],
+        'trainer' => [
+            /*            AdminMiddleware::class,*/
+            \App\Http\Middleware\Practicletrainer::class,
+        ],
+        'student' => [
+            /*            AdminMiddleware::class,*/
+            \App\Http\Middleware\Student::class,
         ],
         'lang' => [
             LangMiddleware::class

@@ -12,7 +12,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Internship
                 </a>
             </div>
 
@@ -63,6 +63,12 @@
                                     <li><a href="{{ url('/contact/create') }}">Create</a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="">Verification <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ url('/verification') }}">Show</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     @elseif(Auth::user()->getRole() == 'student')
                         <ul class="nav navbar-nav">
@@ -77,12 +83,12 @@
                     @elseif(Auth::user()->getRole() == 'teacher')
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/') }}">Home</a></li>
-                            <li class="dropdown">
+{{--                            <li class="dropdown">
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="">Company <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
+                                <ul class=" dropdown-menu">
                                     <li><a href="{{ url('/company') }}">Show</a></li>
                                 </ul>
-                            </li>
+                            </li>--}}
                             <li class="dropdown">
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="">School <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
