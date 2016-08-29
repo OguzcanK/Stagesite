@@ -54,7 +54,7 @@
                                             <p>Status:
                                                 {{ $internship->status->name }}
                                             </p>
-                                                <a href="{{ route('internship.show', [$internship->id . "," . $co->id]) }}" class="btn btn-primary">Read more</a>
+                                                <a href="{{ route('internship.show', [$internship->id]) }}" class="btn btn-primary">Read more</a>
                                             @if(Auth::check())
                                                     <?php
                                                     $contact = \App\Contact::findorfail(Auth::user()->contact_id);

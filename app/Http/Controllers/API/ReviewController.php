@@ -15,8 +15,8 @@ class ReviewController extends Controller
 {
     public function store(Request $request){
         $input = $request->all();
-
-        if(isset($input['status'])){
+        
+        if($input['status'] == 'on'){
             $status_id = 2;
         }
         else{

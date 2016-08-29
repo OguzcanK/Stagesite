@@ -81,11 +81,11 @@ class InternshipController extends Controller
 	public
 	function show ($info)
 	{
-		$contactz = explode(",", $info);
+	/*	$contactz = explode(",", $info);
 		$contactz[0]; // piece1
-		$contactz[1]; // piece2
-		
-		$internship = Internship::findorfail ($contactz[0]);
+		$contactz[1]; // piece2*/
+
+		$internship = Internship::findorfail ($info);
 
 		$contacts = [];
 
@@ -129,7 +129,7 @@ class InternshipController extends Controller
 				$toolsArray[$tool->id] = $tool->name;
 			}
 		}
-		return view ('Internships.show', compact ('internship', 'reviews', 'internshipcontacts', 'toolsArray', 'contactz'));
+		return view ('Internships.show', compact ('internship', 'reviews', 'internshipcontacts', 'toolsArray', 'info'));
 	}
 
 }

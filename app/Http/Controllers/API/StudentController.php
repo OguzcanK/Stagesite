@@ -41,10 +41,10 @@ class StudentController extends Controller
 				$internship = Internship::findorfail($input['internship_id']);
 				$internship->update(['status_id' => 6]);
 			}
-			$internship = $input['internship_id'];
-			$internship = Internship::findorfail($internship);
+			/*$internship = $input['internship_id'];
+			$internship = Internship::findorfail($internship);*/
 		}
-		return redirect (route ('internship.show', $internship));
+		return redirect (route ('internship.show', $input['internship_id']));
 	}
 
 	public

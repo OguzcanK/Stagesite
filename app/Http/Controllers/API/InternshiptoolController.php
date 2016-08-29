@@ -51,7 +51,7 @@ class InternshiptoolController extends Controller
 			}
 			else
 			{
-				$contact = Internship::findorfail ($internship);
+				$internship = Internship::findorfail ($internship);
 				$contact = Contact::findorfail ($internship->contact_id);
 
 				DB::table ('internshiptools')->insertGetId (

@@ -39,8 +39,8 @@
                 @endif
             @if(Auth::user()->getRole() == 'admin' )
                 {!! Form::open(['route' => ['contact.destroy', $contact->id], 'method' => 'delete', 'style' => 'display:inline']) !!}
-                {!! Form::submit("trash", ['class' => 'btn btn-danger delete']) !!}
-                {!! Form::close() !!}
+                        {!! Form::submit("trash", ['class' => 'btn btn-danger delete']) !!}
+                        {!! Form::close() !!}
             @endif
         @endif
     </div>

@@ -46,8 +46,8 @@
         <div class="col-md-6">
 
             <?php
-            $contact = \App\Contact::findorfail (Auth::user ()->contact_id);
-            ?>
+/*            $contact = \App\Contact::findorfail (Auth::user ()->contact_id);
+            */?><!--
                 <h3>Tools</h3>
             @foreach($internshiptoolArray as $tool)
                 <a href="{{ Route('tool.show', $tool->id) }}">
@@ -59,21 +59,22 @@
                     <br>
                 </a>
             @endforeach
-            {!! Form::open(['route' => ['internshiptool.update', $contact->id], 'method' => 'put', 'class'=>'delete inline']) !!}
+            {{--{!! Form::open(['route' => ['internshiptool.update', $contact->id], 'method' => 'put', 'class'=>'delete inline']) !!}--}}
             <div class="form-group">
-                {!! Form::hidden('internship_user_id',Auth::user()->id, NULL, ['class' => 'form-control', 'required']) !!}
+                {{--{!! Form::hidden('internship_user_id',Auth::user()->id, NULL, ['class' => 'form-control', 'required']) !!}
                 {!! Form::label('Tools', 'Tools:') !!}
-                {!! Form::select('tool', $toolsArray, NULL, ['class' => 'form-control']) !!}
+                {!! Form::select('tool', $toolsArray, NULL, ['class' => 'form-control']) !!}--}}
             </div>
 
 
                 <div class="form-group col-md-12">
-                {!! Form::submit('add tool', ['class' => 'btn btn-primary form-control ']) !!}
+                {{--{!! Form::submit('add tool', ['class' => 'btn btn-primary form-control ']) !!}--}}
             </div>
-            {!! Form::close() !!}
+            {{--{!! Form::close() !!}--}}-->
         </div>
             @endif
         @endif
+
         @if(Auth::user()->getRole() == 'admin' OR Auth::user()->getRole() == 'student')
             <div class="col-md-6">
                 @if($profile->education_offer_id != NULL OR !empty($profile->education_offer_id))
